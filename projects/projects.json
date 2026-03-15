@@ -5,7 +5,7 @@
     "image": "pos-system",
     "category": "fullstack",
     "links": {
-      "view": "https://youtu.be/YOUR_VIDEO_ID",
+      "view": "javascript:openGallery()",
       "code": "private"
     }
   },
