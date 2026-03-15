@@ -3,265 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M. Abhishek Ramesh | Workspace</title>
+    <title>M. Abhishek Ramesh | Operations & Systems Engineer</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="#home" class="logo">Abhishek<span>.Systems</span></a>
-        <ul class="nav-links">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <header>
+        <a href="/" class="logo"><i class="fas fa-code"></i> Abhishek<span>.Systems</span></a>
+        <div id="menu" class="fas fa-bars"></div>
+        <nav class="navbar">
+            <ul>
+                <li><a class="active" href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#work">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <section id="home">
-        <div class="hero-content">
-            <h1>M. Abhishek <span>Ramesh</span></h1>
-            <h2>Operations Manager & Systems Engineer</h2>
-            <p style="margin-bottom: 30px; color: var(--text-secondary); font-size: 1.1rem; max-width: 600px;">Bridging the gap between physical business logistics and secure digital infrastructure. Specializing in Python, SQL, and enterprise-grade operational systems.</p>
-            
+    <section class="home" id="home">
+        <div id="particles-js"></div>
+        <div class="content">
+            <h2>Hi There,<br/> I'm M. Abhishek <span>Ramesh</span></h2>
+            <p>I specialize in <span class="typing-text"></span></p>
             <div class="socials">
                 <a href="https://linkedin.com/in/abhishek-ramesh-mallavarapu-06b69618b/" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/Abhishek333k" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="mailto:mabhishekramesh1@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
+            <a href="#about" class="btn"><span>About Me</span> <i class="fas fa-arrow-circle-down"></i></a>
+        </div>
+        <div class="image">
+            <img draggable="false" class="tilt" src="https://via.placeholder.com/400x400.png?text=Upload+Your+Photo" alt="Abhishek Ramesh">
+        </div>
+    </section>
 
-            <div style="display: flex; gap: 15px;">
-                <a href="#contact" class="btn btn-primary">Initiate Contact</a>
-                <a href="./assets/M_Abhishek_Ramesh_Resume.pdf" download class="btn"><i class="fas fa-download"></i> Legal CV</a>
+    <section class="about" id="about">
+        <h2 class="heading"><i class="fas fa-user-alt"></i> About <span>Me</span></h2>
+        <div class="row">
+            <div class="image">
+                <img draggable="false" class="tilt" src="https://via.placeholder.com/400x300.png?text=Workspace+Image" alt="">
+            </div>
+            <div class="content">
+                <h3>Operations Manager & Systems Engineer</h3>
+                <span class="tag">Bridging Logistics & Infrastructure</span>
+                <p>I leverage my technical expertise in E.C.E, leadership skills, and adaptability to pursue challenging roles in software development and operations management. I build practical, compliant, and highly efficient software solutions for logistics and retail.</p>
+                <div class="resumebtn">
+                    <a href="./assets/M_Abhishek_Ramesh_Resume.pdf" download class="btn"><span>Legal CV</span> <i class="fas fa-chevron-right"></i></a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="about" style="background-color: var(--google-bg-white);">
-        <h2 class="section-title">About <span>Me</span></h2>
-        <div class="grid-container" style="max-width: 1000px; margin: 0 auto;">
-            <div class="card" style="grid-column: 1 / -1;">
-                <h3>Career Objective</h3>
-                <p>To leverage my technical expertise, leadership skills, and adaptability in pursuing challenging roles in software development or operations management, contributing to innovative solutions in a competitive environment.</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-user-shield" style="color: var(--google-blue);"></i> Personality Traits</h3>
-                <ul style="list-style-position: inside; color: var(--text-secondary); padding-left: 10px;">
-                    <li>Adaptive Learner & Adaptable</li>
-                    <li>Effective Communication Skills</li>
-                    <li>Leadership Qualities</li>
-                    <li>Time Management & Punctual</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-lightbulb" style="color: var(--google-yellow);"></i> Key Interests</h3>
-                <p>Internet of Things (IoT), Cyber Security, Industrial Engineering, Creative Writing, Travel, and Fitness.</p>
+    <section class="skills" id="skills">
+        <h2 class="heading"><i class="fas fa-laptop-code"></i> Skills & <span>Abilities</span></h2>
+        <div class="container">
+            <div class="row" id="skillsContainer">
+                <div class="bar"><div class="info"><span><i class="fab fa-python"></i> Python</span></div></div>
+                <div class="bar"><div class="info"><span><i class="fas fa-database"></i> SQL</span></div></div>
+                <div class="bar"><div class="info"><span><i class="fab fa-html5"></i> HTML / CSS</span></div></div>
+                <div class="bar"><div class="info"><span><i class="fas fa-microchip"></i> C / C++</span></div></div>
+                <div class="bar"><div class="info"><span><i class="fas fa-network-wired"></i> CCNA & Networking</span></div></div>
+                <div class="bar"><div class="info"><span><i class="fas fa-shield-alt"></i> Cyber Security</span></div></div>
             </div>
         </div>
     </section>
 
-    <section id="skills">
-        <h2 class="section-title">Technical <span>Proficiency</span></h2>
-        <div class="grid-container" style="max-width: 1000px; margin: 0 auto;">
-            
-            <div class="card">
-                <div class="skill-category">
-                    <h4>Programming & Web</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">C</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">HTML / CSS</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h4>Systems & Networking</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Windows</span>
-                        <span class="skill-tag">Linux</span>
-                        <span class="skill-tag">Cisco CCNA R&S (Basics)</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h4>Operations</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Tally (Basics)</span>
-                        <span class="skill-tag">Resource Allocation</span>
-                        <span class="skill-tag">Data Management</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3><i class="fas fa-certificate" style="color: var(--google-green);"></i> Certifications & Training</h3>
-                <ul style="color: var(--text-secondary); padding-left: 20px; line-height: 1.8;">
-                    <li>Training in Ethical Hacking (Internshala)</li>
-                    <li>MTA: Introduction to Programming Using Python</li>
-                    <li>Wireless Communication for Everybody (YONSEI via Coursera)</li>
-                    <li>CCNA Routing and Switching (A.A.N.M & V.V.R.S.R Polytechnic)</li>
-                    <li>Embedded Systems Fundamentals (APSSDC - 2019)</li>
-                    <li>National Level Workshop on Ethical Hacking & Cybersecurity (Scored 86%)</li>
-                </ul>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="education" style="background-color: var(--google-bg-white);">
-        <h2 class="section-title">Academic <span>Profile</span></h2>
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div class="timeline">
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">2020 - 2023</div>
+    <section class="education" id="education">
+        <h2 class="heading"><i class="fas fa-graduation-cap"></i> My <span>Education</span></h2>
+        <div class="box-container">
+            <div class="box">
+                <div class="image"><img draggable="false" src="https://via.placeholder.com/150/1a73e8/ffffff?text=B.Tech" alt=""></div>
+                <div class="content">
                     <h3>B.Tech (E.C.E)</h3>
-                    <p style="color: var(--text-secondary); font-weight: 500;">Bapatla Engineering College, Bapatla (Autonomous)<br>Acharya Nagarjuna University, Guntur</p>
-                    <p style="color: var(--google-blue); font-weight: bold; margin-top: 10px;">CGPA: 6.61</p>
+                    <p>Bapatla Engineering College | Acharya Nagarjuna University</p>
+                    <h4>2020 - 2023 | CGPA: 6.61</h4>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">2017 - 2020</div>
+            </div>
+            <div class="box">
+                <div class="image"><img draggable="false" src="https://via.placeholder.com/150/1a73e8/ffffff?text=Poly" alt=""></div>
+                <div class="content">
                     <h3>Polytechnic (E.C.E)</h3>
-                    <p style="color: var(--text-secondary); font-weight: 500;">A.A.N.M & V.V.R.S.R Polytechnic, Gudlavalleru<br>State Board of Technical Education</p>
-                    <p style="color: var(--google-blue); font-weight: bold; margin-top: 10px;">Percentage: 73.29%</p>
+                    <p>A.A.N.M & V.V.R.S.R Polytechnic, Gudlavalleru</p>
+                    <h4>2017 - 2020 | 73.29%</h4>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">2016 - 2017</div>
-                    <h3>S.S.C</h3>
-                    <p style="color: var(--text-secondary); font-weight: 500;">Sri Chaitanya High School, Konatanapadu<br>Board of Secondary Education</p>
-                    <p style="color: var(--google-blue); font-weight: bold; margin-top: 10px;">CGPA: 9.2</p>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <section id="experience">
-        <h2 class="section-title">Operational <span>Experience</span></h2>
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div class="timeline">
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">Dec 2023 - Present</div>
-                    <h3>Supervisor</h3>
-                    <p style="color: var(--text-secondary); font-weight: 500; margin-bottom: 10px;">SAGAR BORE WELLS, Guntur, India</p>
-                    <ul style="color: var(--text-secondary); padding-left: 20px; font-size: 0.95rem;">
-                        <li>Supervised a team of 12, coordinating schedules and delegating tasks to ensure timely project completion.</li>
-                        <li>Led the implementation of a new project management software, increasing efficiency by 20%.</li>
-                        <li>Adept at resource allocation and logistics management, optimizing the use of equipment and materials.</li>
-                    </ul>
+    <section class="experience" id="experience">
+        <h2 class="heading"><i class="fas fa-briefcase"></i> Operational <span>Experience</span></h2>
+        <div class="timeline">
+            <div class="container right">
+                <div class="content">
+                    <div class="tag"><h2>Sagar Bore Wells</h2></div>
+                    <div class="desc">
+                        <h3>Supervisor</h3>
+                        <p>Dec 2023 - Present</p>
+                        <p>Supervise a team of 12, coordinating schedules and delegating tasks. Led implementation of project management software, increasing efficiency by 20%.</p>
+                    </div>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">Sep 2025 - Dec 2025</div>
-                    <h3>Archiving Specialist (Contract)</h3>
-                    <p style="color: var(--text-secondary); font-weight: 500; margin-bottom: 10px;">ADITHYA TECHNOLOGIES, Hyderabad</p>
-                    <ul style="color: var(--text-secondary); padding-left: 20px; font-size: 0.95rem;">
-                        <li>Executing a fixed-term, remote contract role with rapid adaptation to new project requirements.</li>
-                        <li>Engaged in document and data management tasks, focusing on administrative efficiency and data privacy.</li>
-                    </ul>
+            </div>
+            <div class="container left">
+                <div class="content">
+                    <div class="tag"><h2>Adithya Technologies</h2></div>
+                    <div class="desc">
+                        <h3>Archiving Specialist</h3>
+                        <p>Sep 2025 - Dec 2025</p>
+                        <p>Executing a fixed-term, remote contract role focusing on document management, administrative efficiency, and data privacy compliance.</p>
+                    </div>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">Oct 2024 - Dec 2024</div>
-                    <h3>Archiving Specialist (Contract)</h3>
-                    <p style="color: var(--text-secondary); font-weight: 500; margin-bottom: 10px;">RAVI TECHNOLOGIES, Hyderabad</p>
-                    <ul style="color: var(--text-secondary); padding-left: 20px; font-size: 0.95rem;">
-                        <li>Managed and archived project documents, ensuring compliance with organizational standards and confidentiality.</li>
-                        <li>Coordinated with client teams to ensure timely completion of archiving tasks.</li>
-                    </ul>
+            </div>
+            <div class="container right">
+                <div class="content">
+                    <div class="tag"><h2>Ravi Technologies</h2></div>
+                    <div class="desc">
+                        <h3>Archiving Specialist</h3>
+                        <p>Oct 2024 - Dec 2024</p>
+                        <p>Managed project-related documents, ensuring compliance with organizational standards and confidentiality of sensitive information.</p>
+                    </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <section id="projects" style="background-color: var(--google-bg-white);">
-        <h2 class="section-title">Commercial <span>Deployments</span></h2>
-        <div class="grid-container" style="max-width: 1000px; margin: 0 auto;">
-            
-            <div class="card">
-                <h3>Enterprise POS System</h3>
-                <p style="font-size: 0.8rem; color: var(--google-green); font-weight: bold; margin-bottom: 10px;">● LIVE: SAGAR TRADERS</p>
-                <p>Offline-capable Point of Sale application engineered for retail operations, featuring dynamic invoice generation and strict sequential billing logic.</p>
-                <a href="#" class="btn" style="font-size: 0.85rem;">Request Demo</a>
+    <section class="work" id="work">
+        <h2 class="heading"><i class="fas fa-laptop-code"></i> Commercial <span>Deployments</span></h2>
+        <div class="box-container">
+            <div class="box tilt">
+                <img draggable="false" src="https://via.placeholder.com/400x200/1a73e8/ffffff?text=Sagar+Traders+POS" alt="POS">
+                <div class="content">
+                    <div class="tag"><h3>Enterprise POS System</h3></div>
+                    <div class="desc">
+                        <p>Offline-capable Point of Sale application featuring dynamic invoice generation and strict sequential billing logic.</p>
+                        <div class="btns">
+                            <a href="#" class="btn"><i class="fas fa-eye"></i> Request Demo</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="card">
-                <h3>Sagar Borewells Digital Platform</h3>
-                <p style="font-size: 0.8rem; color: var(--google-green); font-weight: bold; margin-bottom: 10px;">● DEPLOYED</p>
-                <p>A high-performance commercial frontend engineered to drive B2B/B2C service conversions, complementing field operations logistics.</p>
-                <a href="https://sagarborewells.com" target="_blank" class="btn btn-primary" style="font-size: 0.85rem;">Visit Platform</a>
+            <div class="box tilt">
+                <img draggable="false" src="https://via.placeholder.com/400x200/1e8e3e/ffffff?text=Sagar+Borewells" alt="Web">
+                <div class="content">
+                    <div class="tag"><h3>Sagar Borewells Platform</h3></div>
+                    <div class="desc">
+                        <p>High-performance commercial frontend engineered to drive B2B/B2C service conversions.</p>
+                        <div class="btns">
+                            <a href="https://sagarborewells.com" target="_blank" class="btn"><i class="fas fa-eye"></i> View Live</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="card">
-                <h3>SilenVault</h3>
-                <p style="font-size: 0.8rem; color: var(--google-green); font-weight: bold; margin-bottom: 10px;">● DEPLOYED</p>
-                <p>A secure digital web application focused on data integrity, utilizing principles from ethical hacking and cyber security training.</p>
-                <a href="https://www.silenvault.com" target="_blank" class="btn btn-primary" style="font-size: 0.85rem;">Visit System</a>
+            <div class="box tilt">
+                <img draggable="false" src="https://via.placeholder.com/400x200/fbbc04/ffffff?text=SilenVault" alt="Vault">
+                <div class="content">
+                    <div class="tag"><h3>SilenVault</h3></div>
+                    <div class="desc">
+                        <p>Secure digital web application focused on data integrity and secure UI architecture.</p>
+                        <div class="btns">
+                            <a href="https://www.silenvault.com" target="_blank" class="btn"><i class="fas fa-eye"></i> View System</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
     </section>
 
-    <section id="contact">
-        <h2 class="section-title">Initiate <span>Contact</span></h2>
-        <div class="contact-grid">
-            
-            <div class="contact-info">
-                <div class="card">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h4 style="color: var(--text-primary); margin-bottom: 5px;">Email Vector</h4>
-                        <p style="margin: 0;"><a href="mailto:mabhishekramesh1@gmail.com" style="color: var(--text-secondary); text-decoration: none;">mabhishekramesh1@gmail.com</a></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <i class="fas fa-phone-alt"></i>
-                    <div>
-                        <h4 style="color: var(--text-primary); margin-bottom: 5px;">Direct Line</h4>
-                        <p style="margin: 0; color: var(--text-secondary);">+91 93470 08871</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h4 style="color: var(--text-primary); margin-bottom: 5px;">Headquarters</h4>
-                        <p style="margin: 0; color: var(--text-secondary);">7-548, Mangalagiri, Guntur,<br>Andhra Pradesh – 522303</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contact-form">
-                <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Entity Name / Contact Person" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Return Email Vector" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="State your operational requirements..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Transmit Message <i class="fas fa-paper-plane"></i></button>
-                </form>
-            </div>
-
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 M. Abhishek Ramesh. All commercial rights reserved.</p>
-        <p style="font-size: 0.75rem; margin-top: 5px;">Systems and applications provided "as-is". Proprietary source code is confidential.</p>
-    </footer>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    
     <script src="script.js"></script>
 </body>
 </html>
