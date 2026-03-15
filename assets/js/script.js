@@ -173,48 +173,52 @@ VanillaTilt.init(document.querySelectorAll(".tilt"), {
     max: 15,
 });
 
-/* ===== SCROLL REVEAL ANIMATION ===== */
+/* ===== UNIFIED MATERIAL DESIGN SCROLL REVEAL ===== */
 const srtop = ScrollReveal({
-    origin: 'top',
-    distance: '80px',
-    duration: 1000,
-    reset: true
+    origin: 'bottom',
+    distance: '40px',
+    duration: 800,
+    delay: 100,
+    easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+    reset: false /* Prevents erratic re-animation when scrolling up */
 });
 
 /* SCROLL HOME */
-srtop.reveal('.home .content h3', { delay: 200 });
+srtop.reveal('.home .content h2', { delay: 100 });
 srtop.reveal('.home .content p', { delay: 200 });
-srtop.reveal('.home .content .btn', { delay: 200 });
+srtop.reveal('.home .content .btn', { delay: 300 });
 srtop.reveal('.home .image', { delay: 400 });
-srtop.reveal('.home .linkedin', { interval: 600 });
-srtop.reveal('.home .github', { interval: 800 });
-srtop.reveal('.home .telegram', { interval: 1000 });
+srtop.reveal('.home .linkedin', { interval: 100, delay: 500 });
+srtop.reveal('.home .github', { interval: 100, delay: 600 });
+srtop.reveal('.home .telegram', { interval: 100, delay: 700 });
 
 /* SCROLL ABOUT */
-srtop.reveal('.about .content h3', { delay: 200 });
+srtop.reveal('.about .content h3', { delay: 150 });
 srtop.reveal('.about .content .tag', { delay: 200 });
-srtop.reveal('.about .content p', { delay: 200 });
-srtop.reveal('.about .content .box-container', { delay: 200 });
-srtop.reveal('.about .content .resumebtn', { delay: 200 });
+srtop.reveal('.about .content p', { delay: 250 });
+srtop.reveal('.about .content .box-container', { delay: 300 });
+srtop.reveal('.about .content .resumebtn', { delay: 350 });
 
 /* SCROLL SKILLS */
-srtop.reveal('.skills .container', { interval: 200 });
-srtop.reveal('.skills .container .bar', { delay: 400 });
+srtop.reveal('.skills .container', { delay: 150 });
+srtop.reveal('.skills .container .bar', { interval: 100, delay: 250 });
 
 /* SCROLL EDUCATION */
-srtop.reveal('.education .box', { interval: 200 });
+srtop.reveal('.education .box', { interval: 150, delay: 150 });
 
 /* SCROLL COURSES & INTERNSHIPS */
-srtop.reveal('.courses .course-card', { interval: 200 });
+srtop.reveal('.courses .course-card', { interval: 150, delay: 150 });
+
+/* SCROLL COMMERCIAL DEPLOYMENTS (Projects) */
+srtop.reveal('.work .box', { interval: 150, delay: 150 });
 
 /* SCROLL EXPERIENCE */
-srtop.reveal('.experience .timeline', { delay: 400 });
-srtop.reveal('.experience .timeline .container', { interval: 400 });
+srtop.reveal('.experience .timeline', { delay: 150 });
+srtop.reveal('.experience .timeline .container', { interval: 200, delay: 250 });
 
 /* SCROLL CONTACT */
-srtop.reveal('.contact .container', { delay: 400 });
-srtop.reveal('.contact .container .form-group', { delay: 400 });
-
+srtop.reveal('.contact .container', { delay: 150 });
+srtop.reveal('.contact .container .form-group', { delay: 250 });
 
 /* ===== PARTICLES.JS ENGINE (GOOGLE WORKSPACE THEME) ===== */
 if(document.getElementById('particles-js')) {
