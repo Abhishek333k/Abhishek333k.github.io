@@ -246,40 +246,36 @@
 </div>
 </section>
 <section class="contact" id="contact">
-  
   <h2 class="heading"><i class="fas fa-headset"></i> Initiate <span>Contact</span></h2>
-
-  <div class="container">
-    <div class="content">
-      <div class="image-box">
-        <img draggable="false" src="./assets/images/contact1.png" alt="Contact">
-      </div>
-    <form action="https://formspree.io/f/mlgpwokd" method="POST" id="contact-form">
-      
-      <div class="form-group">
-        <div class="field">
-          <input type="text" name="name" placeholder="Entity Name" required>
-          <i class='fas fa-user'></i>
+  
+  <div class="container" style="max-width: 700px; border: none; box-shadow: none; background: transparent;">
+    <div class="content" style="justify-content: center;">
+      <form action="https://formspree.io/f/mlgpwokd" method="POST" id="contact-form" class="saas-form">
+        <div class="form-group">
+          <div class="field">
+            <input type="text" name="name" placeholder="Entity Name" required>
+            <i class='fas fa-user'></i>
+          </div>
+          <div class="field">
+            <input type="email" name="email" placeholder="Return Email Vector" required>
+            <i class='fas fa-envelope'></i>
+          </div>
+          <div class="field">
+            <input type="text" name="phone" placeholder="Phone Number">
+            <i class='fas fa-phone-alt'></i>
+          </div>
+          <div class="message">
+            <textarea placeholder="State your operational requirements..." name="message" required></textarea>
+            <i class="fas fa-comment-dots"></i>
+          </div>
         </div>
-        <div class="field">
-          <input type="email" name="email" placeholder="Return Email Vector" required>
-          <i class='fas fa-envelope'></i>
+        <div class="button-area">
+          <button type="submit" class="btn">
+            Transmit Message <i class="fa fa-paper-plane"></i>
+          </button>
         </div>
-        <div class="field">
-          <input type="text" name="phone" placeholder="Phone Number">
-          <i class='fas fa-phone-alt'></i>
-        </div>
-        <div class="message">
-        <textarea placeholder="State your operational requirements..." name="message" required></textarea>
-        <i class="fas fa-comment-dots"></i>
-        </div>
-        </div>
-      <div class="button-area">
-        <button type="submit">
-          Transmit Message <i class="fa fa-paper-plane"></i></button>
-      </div>
-    </form>
-  </div>
+      </form>
+    </div>
   </div>
 </section>
 <section class="footer" style="padding: 6rem 9% 3rem; background: var(--bg-white); border-top: 1px solid var(--border-color);">
