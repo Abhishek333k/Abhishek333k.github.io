@@ -63,18 +63,20 @@ $(document).ready(function () {
 
 });
 
-// Browser Tab Operations
-document.addEventListener('visibilitychange',
-    function () {
-        if (document.visibilityState === "visible") {
-            document.title = "Portfolio | M. Abhishek Ramesh";
-            $("#favicon").attr("href", "assets/images/favicon.png");
-        }
-        else {
-            document.title = "Return to Secure Terminal";
-            $("#favicon").attr("href", "assets/images/favhand.png");
-        }
-    });
+// Browser Tab Operations & Dynamic Favicon
+document.addEventListener('visibilitychange', function () {
+    // Detect OS Theme
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let activeFavicon = isDarkMode ? "assets/images/favicon_white.png" : "assets/images/favicon_black.png";
+    
+    if (document.visibilityState === "visible") {
+        document.title = "Portfolio | M. Abhishek Ramesh";
+        $("#favicon").attr("href", activeFavicon);
+    } else {
+        document.title = "Return to Secure Terminal";
+        $("#favicon").attr("href", activeFavicon);
+    }
+});
 
 // Typed js effect starts
 var typed = new Typed(".typing-text", {
