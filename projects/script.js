@@ -38,7 +38,94 @@ function getProjects() {
             return data
         });
 }
+/* =========================================
+   POS GALLERY CONTROLLER
+   ========================================= */
+const posImages = [
+    { src: "../assets/images/projects/pos/pos-1-dashboard.webp", caption: "1. Main Dashboard" },
+    { src: "../assets/images/projects/pos/pos-2-billing.webp", caption: "2. POS & Billing (Cart)" },
+    { src: "../assets/images/projects/pos/pos-3-products.webp", caption: "3. Product Database" },
+    { src: "../assets/images/projects/pos/pos-4-customers.webp", caption: "4. Customer Database" },
+    { src: "../assets/images/projects/pos/pos-5-ledger.webp", caption: "5. Ledger / Khata" },
+    { src: "../assets/images/projects/pos/pos-6-sales.webp", caption: "6. Sales Reports" },
+    { src: "../assets/images/projects/pos/pos-7-analytics.webp", caption: "7. Business Analytics" },
+    { src: "../assets/images/projects/pos/pos-8-settings.webp", caption: "8. System Settings (v5.4)" }
+];
 
+let currentSlide = 0;
+let autoSlideInterval;
+
+function openGallery() {
+    const modal = document.getElementById('pos-lightbox');
+    modal.classList.add('show');
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
+    updateGalleryUI();
+    
+    // Start auto-slider (changes every 3.5 seconds)
+    startAutoSlide();
+}
+
+function closeGallery() {
+    const modal = document.getElementById('pos-lightbox');
+    modal.classList.remove('show');
+    document.body.style.overflow = "auto";
+    
+    // Reset zoom and clear interval
+    document.getElementById("lightbox-img").classList.remove("zoomed");
+    clearInterval(autoSlideInterval);
+}
+
+function updateGalleryUI() {
+    const img = document.getElementById("lightbox-img");
+    const caption = document.getElementById("lightbox-caption");
+    
+    // Fade out slightly for smooth transition
+    img.style.opacity = 0.5;
+    
+    setTimeout(() => {
+        img.src = posImages[currentSlide].src;
+        caption.innerText = `${posImages[currentSlide].caption} (${currentSlide + 1} / 8)`;
+        img.style.opacity = 1;
+    }, 150);
+}
+
+function changeSlide(direction) {
+    clearInterval(autoSlideInterval); // Stop auto-slide if user manually clicks
+    currentSlide += direction;
+    
+    // Loop around
+    if (currentSlide >= posImages.length) currentSlide = 0;
+    if (currentSlide < 0) currentSlide = posImages.length - 1;
+    
+    // Reset zoom when changing slides
+    document.getElementById("lightbox-img").classList.remove("zoomed");
+    updateGalleryUI();
+}
+
+function startAutoSlide() {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(() => {
+        changeSlide(1);
+        startAutoSlide(); // restarts the timer so it doesn't overlap manual clicks
+    }, 3500);
+}
+
+function toggleZoom() {
+    const img = document.getElementById("lightbox-img");
+    img.classList.toggle("zoomed");
+    
+    // Pause auto-slider while zoomed in
+    if(img.classList.contains("zoomed")) {
+        clearInterval(autoSlideInterval);
+    } else {
+        startAutoSlide();
+    }
+}
+
+// Close modal if user clicks outside the image
+document.getElementById('pos-lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeGallery();
+});
 
 function showProjects(projects) {
     let projectsContainer = document.querySelector(".work .box-container");
