@@ -3,217 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M. Abhishek Ramesh | Operations & Systems Engineer</title>
-    <style>
-        /* Base Architecture & Typography */
-        :root {
-            --bg-color: #0d1117;
-            --text-primary: #c9d1d9;
-            --text-secondary: #8b949e;
-            --accent-color: #58a6ff;
-            --card-bg: #161b22;
-            --border-color: #30363d;
-            --success-color: #2ea043;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-
-        header {
-            text-align: center;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 40px;
-        }
-
-        h1 { color: #ffffff; margin-bottom: 5px; font-size: 2.5rem; }
-        .subtitle { color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 15px; }
-        
-        .contact-links {
-            margin-bottom: 25px;
-            font-size: 0.9rem;
-        }
-        .contact-links a {
-            color: var(--accent-color);
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        .contact-links a:hover { text-decoration: underline; }
-
-        /* Tech Stack Tags */
-        .tech-stack {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .tag {
-            background-color: rgba(139, 148, 158, 0.1);
-            border: 1px solid var(--border-color);
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .project-card:hover { transform: translateY(-2px); border-color: var(--accent-color); }
-        .project-title { color: var(--accent-color); font-size: 1.3rem; margin-top: 0; margin-bottom: 5px; }
-        
-        .project-status {
-            font-size: 0.75rem;
-            color: var(--success-color);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-        .project-status::before { content: "●"; margin-right: 5px; }
-        .project-desc { flex-grow: 1; margin-bottom: 20px; font-size: 0.95rem; }
-
-        .btn-group { display: flex; gap: 10px; }
-        .btn {
-            padding: 8px 16px;
-            background-color: transparent;
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-align: center;
-            transition: all 0.2s ease;
-            flex: 1;
-        }
-        .btn:hover { background-color: rgba(88, 166, 255, 0.1); }
-        .btn-primary { background-color: var(--accent-color); color: var(--bg-color); }
-        .btn-primary:hover { background-color: #79c0ff; }
-
-        footer {
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-    </style>
+    <title>M. Abhishek Ramesh | Workspace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>M. Abhishek Ramesh</h1>
-            <div class="subtitle">Operations Manager & Systems Architect</div>
+    <nav class="navbar">
+        <a href="#home" class="logo">Abhishek<span>.Systems</span></a>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <div class="hero-content">
+            <h1>M. Abhishek <span>Ramesh</span></h1>
+            <h2>Operations Manager & Systems Engineer</h2>
+            <p style="margin-bottom: 30px; color: var(--text-secondary);">Bridging the gap between physical business logistics and secure digital infrastructure.</p>
             
-            <div class="contact-links">
-                <a href="mailto:mabhishekramesh1@gmail.com">mabhishekramesh1@gmail.com</a> |
-                <a href="https://linkedin.com/Abhishek_Ramesh_Mallavarapu" target="_blank">LinkedIn</a> |
-                <a href="https://github.com/Abhishek333k" target="_blank">GitHub</a> |
-                <span>Mangalagiri, AP</span>
+            <div class="socials">
+                <a href="https://linkedin.com/in/abhishek-ramesh-mallavarapu-06b69618b/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Abhishek333k" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:mabhishekramesh1@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
 
-            <p style="max-width: 700px; margin: 0 auto 20px auto;">
-                Bridging the gap between physical business operations and secure digital infrastructure. Leveraging a background in E.C.E and team supervision to build practical, compliant, and highly efficient software solutions for logistics and retail.
-            </p>
-
-            <div class="tech-stack">
-                <span class="tag">Python</span>
-                <span class="tag">SQL</span>
-                <span class="tag">HTML/CSS</span>
-                <span class="tag">C / C++</span>
-                <span class="tag">Cyber Security</span>
-                <span class="tag">Operations Management</span>
+            <div style="display: flex; gap: 15px;">
+                <a href="#projects" class="btn btn-primary">View Deployments</a>
+                <a href="./assets/M_Abhishek_Ramesh_Resume.pdf" download class="btn"><i class="fas fa-download"></i> Legal CV</a>
             </div>
-        </header>
+        </div>
+    </section>
 
-        <section>
-            <h2 style="margin-bottom: 25px;">Live Systems & Commercial Deployments</h2>
-            <div class="project-grid">
+    <section id="about">
+        <h2 class="section-title">Core <span>Competencies</span></h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3><i class="fas fa-microchip" style="color: var(--google-blue);"></i> Engineering Foundation</h3>
+                <p>B.Tech in Electronics and Communication Engineering (E.C.E) from Bapatla Engineering College.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-code" style="color: var(--google-blue);"></i> Technical Stack</h3>
+                <p>Proficient in Python, SQL, C/C++, and full-stack web technologies (HTML/CSS/JS) for building secure applications.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-shield-alt" style="color: var(--google-blue);"></i> Operational Security</h3>
+                <p>Trained in Ethical Hacking & Cybersecurity with a focus on data privacy, IoT architecture, and secure infrastructure.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" style="background-color: var(--google-bg-white);">
+        <h2 class="section-title">Operational <span>Experience</span></h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="timeline">
                 
-                <div class="project-card">
-                    <h3 class="project-title">Enterprise POS System</h3>
-                    <span class="project-status">Live Operation: Sagar Traders</span>
-                    <div class="project-desc">
-                        <p>A comprehensive Online Point of Sale (POS) application engineered for retail operations.</p>
-                        <ul style="padding-left: 20px; margin-top: 10px; color: var(--text-secondary);">
-                            <li>Offline-capable transaction processing.</li>
-                            <li>Dynamic invoice generation with sequential billing logic.</li>
-                            <li>Automated inventory reconciliation and CRM tracking.</li>
-                        </ul>
-                    </div>
-                    <div class="btn-group">
-                        <a href="#" class="btn btn-primary">Request System Demo</a>
-                    </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Dec 2023 - Present</div>
+                    <h3>Supervisor | Sagar Bore Wells</h3>
+                    <p>Supervise a team of 12, coordinate logistics, and optimize resource allocation. Led the implementation of project management software, increasing operational efficiency by 20%.</p>
                 </div>
 
-                <div class="project-card">
-                    <h3 class="project-title">Sagar Borewells Digital Platform</h3>
-                    <span class="project-status">Deployed in Production</span>
-                    <div class="project-desc">
-                        <p>A high-performance commercial frontend engineered to drive B2B/B2C service conversions, complementing field operations logistics.</p>
-                        <ul style="padding-left: 20px; margin-top: 10px; color: var(--text-secondary);">
-                            <li>Optimized for SEO and rapid core web vitals.</li>
-                            <li>Engineered mobile-first for field-client accessibility.</li>
-                            <li>Integrated contact routing and lead capture logic.</li>
-                        </ul>
-                    </div>
-                    <div class="btn-group">
-                        <a href="https://sagarborewells.com" target="_blank" class="btn btn-primary">Visit Live Site</a>
-                    </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep 2025 - Dec 2025</div>
+                    <h3>Archiving Specialist | Adithya Technologies</h3>
+                    <p>Execute document and data management tasks with a strict focus on administrative efficiency, data privacy, and compliance.</p>
                 </div>
 
-                <div class="project-card">
-                    <h3 class="project-title">SilenVault</h3>
-                    <span class="project-status">Deployed in Production</span>
-                    <div class="project-desc">
-                        <p>A secure digital web application focused on data integrity, utilizing principles from ethical hacking and cyber security training.</p>
-                        <ul style="padding-left: 20px; margin-top: 10px; color: var(--text-secondary);">
-                            <li>Secure routing and responsive UI architecture.</li>
-                            <li>Optimized for speed, high availability, and secure data handling.</li>
-                            <li>Integrated operational monitoring.</li>
-                        </ul>
-                    </div>
-                    <div class="btn-group">
-                        <a href="https://www.silenvault.com" target="_blank" class="btn btn-primary">Visit SilenVault</a>
-                    </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Oct 2024 - Dec 2024</div>
+                    <h3>Archiving Specialist | Ravi Technologies</h3>
+                    <p>Managed project-related documents, maintained confidentiality of sensitive commercial information, and coordinated client team deliverables.</p>
                 </div>
 
             </div>
-        </section>
+        </div>
+    </section>
 
-        <footer>
-            <p>&copy; 2026 M. Abhishek Ramesh. All commercial rights reserved.</p>
-            <p style="font-size: 0.75rem; margin-top: 15px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                <em>Notice: Software and code representations on this site are provided "as-is". Operational systems showcased are proprietary to protect client infrastructure.</em>
-            </p>
-        </footer>
-    </div>
+    <section id="projects">
+        <h2 class="section-title">Commercial <span>Deployments</span></h2>
+        <div class="grid-container">
+            
+            <div class="card">
+                <h3>Enterprise POS System</h3>
+                <p style="font-size: 0.8rem; color: var(--google-green); font-weight: bold; margin-bottom: 10px;">● LIVE: SAGAR TRADERS</p>
+                <p>Offline-capable Point of Sale application engineered for retail operations, featuring dynamic invoice generation and strict sequential billing logic.</p>
+                <a href="#" class="btn" style="font-size: 0.85rem;">Request Demo</a>
+            </div>
 
+            <div class="card">
+                <h3>Sagar Borewells Digital Platform</h3>
+                <p style="font-size: 0.8rem; color: var(--google-green); font-weight: bold; margin-bottom: 10px;">● DEPLOYED</p>
+                <p>A high-performance commercial frontend engineered to drive B2B/B2C service conversions, complementing field operations logistics.</p>
+                <a href="https://sagarborewells.com" target="_blank" class="btn btn-primary" style="font-size: 0.85rem;">Visit Platform</a>
+            </div>
+
+            <div class="card">
+                <h3>SilenVault</h3>
+                <p style="font-size: 0.8rem; color: var(--google-green); font-weight: bold; margin-bottom: 10px;">● DEPLOYED</p>
+                <p>A secure digital web application focused on data integrity, utilizing principles from ethical hacking and cyber security training.</p>
+                <a href="https://www.silenvault.com" target="_blank" class="btn btn-primary" style="font-size: 0.85rem;">Visit System</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 M. Abhishek Ramesh. All commercial rights reserved. | Mangalagiri, AP</p>
+        <p style="font-size: 0.75rem; margin-top: 5px;">Systems and applications provided "as-is". Proprietary source code is confidential.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
