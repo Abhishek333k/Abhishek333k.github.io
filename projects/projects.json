@@ -1,12 +1,12 @@
 [
   {
     "name": "Enterprise POS System",
-    "desc": "Offline-capable Point of Sale application engineered for retail operations. Features dynamic invoice generation and strict sequential billing logic (Live: Sagar Traders).",
+    "desc": "Offline-capable Point of Sale application engineered for retail operations. Features dynamic invoice generation and strict sequential billing logic.",
     "image": "pos-system",
     "category": "fullstack",
     "links": {
-      "view": "#",
-      "code": "https://github.com/Abhishek333k"
+      "view": "https://youtu.be/YOUR_VIDEO_ID",
+      "code": "private"
     }
   },
   {
