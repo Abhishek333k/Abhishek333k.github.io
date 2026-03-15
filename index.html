@@ -36,15 +36,15 @@
     <a href="/" class="logo" style="font-family: monospace; font-size: 2.4rem; font-weight: 700; color: var(--text-dark);">&lt; AR <span style="color: var(--google-blue);">/&gt;</span></a>
     <div id="menu" class="fas fa-bars"></div>
     <nav class="navbar">
-        <ul>
-            <li><a class="active" href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#work">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+      		 <ul>
+                <li><a class="active" href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#courses">Certifications</a></li> <li><a href="#work">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
     </nav>
 </header>
 <section class="home" id="home">
@@ -112,35 +112,69 @@
 </section>
 <section class="education" id="education">
 
-  <h1 class="heading"><i class="fas fa-graduation-cap"></i> My <span>Education</span></h1>
+  <h1 class="heading"><i class="fas fa-graduation-cap"></i> Academic <span>Profile</span></h1>
+  <p class="qoute">Bridging the gap between theoretical engineering and physical application.</p>
 
-    <p class="qoute">Bridging the gap between theoretical engineering and physical application.</p>
-
-    <div class="box-container">
+  <div class="box-container">
 
     <div class="box">
-        <div class="image">
-        <img draggable="false" src="./assets/images/educat/college.jpg" alt="">
+        <div class="image" style="background: var(--bg-light); display: flex; justify-content: center; align-items: center; height: 20rem; border-bottom: 1px solid var(--border-color);">
+            <i class="fas fa-university" style="font-size: 7rem; color: var(--google-blue);"></i>
         </div>
         <div class="content">
-        <h3>Bachelor of Technology (E.C.E)</h3>
-        <p>Bapatla Engineering College | Acharya Nagarjuna University</p>
-        <h4>2020 - 2023 | CGPA: 6.61</h4>
+            <h3>Bachelor of Technology (E.C.E)</h3>
+            <p>Bapatla Engineering College | Acharya Nagarjuna University</p>
+            <h4>2020 - 2023 | CGPA: 6.61</h4>
         </div>
     </div>
 
     <div class="box">
-      <div class="image">
-      <img draggable="false" src="./assets/images/educat/school.jpg" alt="">
-      </div>
-      <div class="content">
-      <h3>Polytechnic Diploma (E.C.E)</h3>
-      <p>A.A.N.M & V.V.R.S.R Polytechnic, Gudlavalleru</p>
-      <h4>2017 - 2020 | 73.29%</h4>
-      </div>
+        <div class="image" style="background: var(--bg-light); display: flex; justify-content: center; align-items: center; height: 20rem; border-bottom: 1px solid var(--border-color);">
+            <i class="fas fa-microchip" style="font-size: 7rem; color: var(--google-blue);"></i>
+        </div>
+        <div class="content">
+            <h3>Polytechnic Diploma (E.C.E)</h3>
+            <p>A.A.N.M & V.V.R.S.R Polytechnic, Gudlavalleru</p>
+            <h4>2017 - 2020 | 73.29%</h4>
+        </div>
     </div>
 
-</div>
+  </div>
+</section>
+	<section class="courses" id="courses" style="background: var(--bg-white);">
+    <h2 class="heading"><i class="fas fa-certificate"></i> Certifications & <span>Training</span></h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto;">
+        
+        <div class="course-card" style="border: 1px solid var(--border-color); border-radius: 8px; padding: 3rem; background: var(--bg-light); transition: 0.3s;">
+            <i class="fas fa-user-shield" style="font-size: 3rem; color: var(--google-blue); margin-bottom: 1.5rem;"></i>
+            <h3 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 1rem;">Ethical Hacking & Cyber Security</h3>
+            <p style="font-size: 1.4rem; color: var(--text-gray); margin-bottom: 1.5rem;">Internshala | National Level Workshop</p>
+            <span style="background: rgba(26, 115, 232, 0.1); color: var(--google-blue); padding: 0.5rem 1.2rem; border-radius: 4px; font-size: 1.2rem; font-weight: 500; border: 1px solid rgba(26, 115, 232, 0.2);">Internship Training</span>
+        </div>
+        
+        <div class="course-card" style="border: 1px solid var(--border-color); border-radius: 8px; padding: 3rem; background: var(--bg-light); transition: 0.3s;">
+            <i class="fab fa-python" style="font-size: 3rem; color: var(--google-green); margin-bottom: 1.5rem;"></i>
+            <h3 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 1rem;">MTA: Programming Using Python</h3>
+            <p style="font-size: 1.4rem; color: var(--text-gray); margin-bottom: 1.5rem;">Microsoft Technology Associate</p>
+            <span style="background: rgba(30, 142, 62, 0.1); color: var(--google-green); padding: 0.5rem 1.2rem; border-radius: 4px; font-size: 1.2rem; font-weight: 500; border: 1px solid rgba(30, 142, 62, 0.2);">Global Certification</span>
+        </div>
+
+        <div class="course-card" style="border: 1px solid var(--border-color); border-radius: 8px; padding: 3rem; background: var(--bg-light); transition: 0.3s;">
+            <i class="fas fa-satellite-dish" style="font-size: 3rem; color: #fbbc04; margin-bottom: 1.5rem;"></i>
+            <h3 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 1rem;">Wireless Communication</h3>
+            <p style="font-size: 1.4rem; color: var(--text-gray); margin-bottom: 1.5rem;">YONSEI University via Coursera</p>
+            <span style="background: rgba(251, 188, 4, 0.1); color: #d9a000; padding: 0.5rem 1.2rem; border-radius: 4px; font-size: 1.2rem; font-weight: 500; border: 1px solid rgba(251, 188, 4, 0.2);">Technical Course</span>
+        </div>
+
+        <div class="course-card" style="border: 1px solid var(--border-color); border-radius: 8px; padding: 3rem; background: var(--bg-light); transition: 0.3s;">
+            <i class="fas fa-network-wired" style="font-size: 3rem; color: var(--text-gray); margin-bottom: 1.5rem;"></i>
+            <h3 style="font-size: 1.8rem; color: var(--text-dark); margin-bottom: 1rem;">CCNA Routing and Switching</h3>
+            <p style="font-size: 1.4rem; color: var(--text-gray); margin-bottom: 1.5rem;">A.A.N.M & V.V.R.S.R Polytechnic</p>
+            <span style="background: #e8eaed; color: var(--text-gray); padding: 0.5rem 1.2rem; border-radius: 4px; font-size: 1.2rem; font-weight: 500; border: 1px solid var(--border-color);">Core Networking</span>
+        </div>
+
+    </div>
 </section>
 <section class="work" id="work">
 
