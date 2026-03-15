@@ -1,3 +1,27 @@
+// Google Material Snackbar (Toast) Controller
+function showToast(message, isError = false) {
+    const snackbar = document.getElementById("snackbar");
+    if (!snackbar) return;
+    
+    // Set the message text
+    snackbar.innerText = message;
+    
+    // Apply error styling if a transmission fails
+    if (isError) {
+        snackbar.classList.add("error");
+    } else {
+        snackbar.classList.remove("error");
+    }
+    
+    // Trigger the animation
+    snackbar.classList.add("show");
+    
+    // Hide it automatically after 3.5 seconds
+    setTimeout(function(){ 
+        snackbar.classList.remove("show"); 
+    }, 3500);
+}
+
 // 1. Dynamic OS Theme Controller (Favicon & Header Logo)
 function setFavicon() {
     const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
