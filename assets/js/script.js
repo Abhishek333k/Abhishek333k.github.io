@@ -28,23 +28,22 @@ $(document).ready(function () {
             }
         });
     });
-    // Dynamic Favicon OS Theme Controller
+  
+    // Dynamic Favicon OS Theme Controller (With Cache Busting)
     function setFavicon() {
         const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         const favicon = document.getElementById('favicon');
-        // NOTE: Ensure this path is correct relative to the HTML file calling it.
-        // For subfolders (projects/experience), the HTML should have href="../assets/..."
+        
         if (favicon) {
             let basePath = favicon.href.substring(0, favicon.href.lastIndexOf('/'));
-            favicon.href = isDarkMode ? `${basePath}/favicon_white.png` : `${basePath}/favicon_black.png`;
+            // Appending ?v=1 forces the browser to ignore the cache and download the fresh image
+            favicon.href = isDarkMode ? `${basePath}/favicon_white.png?v=1` : `${basePath}/favicon_black.png?v=1`;
         }
     }
-    
-    // Execute on load
     setFavicon();
-    
-    // Listen for OS theme changes in real-time
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFavicon);
+
+    
     // smooth scrolling
     $('a[href*="#"]').on('click', function (e) {
         e.preventDefault();
