@@ -1,4 +1,4 @@
-# Abhishek Systems | Operational Portfolio
+# Portfolio
 
 A high-performance, responsive portfolio architecture engineered for M. Abhishek Ramesh to document commercial deployments, system engineering capabilities, and operational logistics experience.
 
