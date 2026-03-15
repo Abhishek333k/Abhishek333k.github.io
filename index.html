@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek333k | Systems & Software Engineering</title>
+    <style>
+        /* Base Architecture & Typography */
+        :root {
+            --bg-color: #0d1117;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent-color: #58a6ff;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --success-color: #2ea043;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        h1 { color: #ffffff; margin-bottom: 10px; font-size: 2.5rem; }
+        .subtitle { color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 20px; }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-color);
+        }
+
+        .project-title {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        .project-status {
+            font-size: 0.75rem;
+            color: var(--success-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .project-status::before {
+            content: "●";
+            margin-right: 5px;
+        }
+
+        .project-desc { flex-grow: 1; margin-bottom: 20px; font-size: 0.95rem; }
+
+        .btn-group { display: flex; gap: 10px; }
+
+        .btn {
+            padding: 8px 16px;
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.2s ease;
+            flex: 1;
+        }
+
+        .btn:hover { background-color: rgba(88, 166, 255, 0.1); }
+        .btn-primary { background-color: var(--accent-color); color: var(--bg-color); }
+        .btn-primary:hover { background-color: #79c0ff; }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .legal-links a { color: var(--text-secondary); text-decoration: none; margin: 0 10px; }
+        .legal-links a:hover { color: var(--accent-color); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Abhishek333k</h1>
+            <div class="subtitle">Software Engineer & Commercial Systems Architect</div>
+            <p>Bridging the gap between high-level code engineering and practical business operations. Specializing in POS systems, secure infrastructure, and enterprise web deployments.</p>
+            <br>
+            <a href="https://github.com/Abhishek333k" target="_blank" class="btn">Audit My GitHub Repositories</a>
+        </header>
+
+        <section>
+            <h2 style="margin-bottom: 25px;">Live Systems & Commercial Deployments</h2>
+            <div class="project-grid">
+                
+                <div class="project-card">
+                    <h3 class="project-title">Enterprise POS System</h3>
+                    <span class="project-status">Live Operation: Sagar Traders</span>
+                    <div class="project-desc">
+                        <p>A comprehensive Online Point of Sale (POS) application engineered for retail operations.</p>
+                        <ul style="padding-left: 20px; margin-top: 10px; color: var(--text-secondary);">
+                            <li>Offline-capable transaction processing.</li>
+                            <li>Dynamic invoice generation with sequential billing logic (Tax Audit Compliant).</li>
+                            <li>Automated inventory reconciliation and CRM tracking.</li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-primary">Request System Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">SilenVault</h3>
+                    <span class="project-status">Deployed in Production</span>
+                    <div class="project-desc">
+                        <p>A secure digital web application focused on data integrity and seamless user experience.</p>
+                        <ul style="padding-left: 20px; margin-top: 10px; color: var(--text-secondary);">
+                            <li>Secure routing and responsive UI architecture.</li>
+                            <li>Optimized for speed, high availability, and secure data handling.</li>
+                            <li>Integrated operational monitoring.</li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <a href="https://www.silenvault.com" target="_blank" class="btn btn-primary">Visit SilenVault</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Sagar Borewells Digital Platform</h3>
+                    <span class="project-status">Deployed in Production</span>
+                    <div class="project-desc">
+                        <p>A high-performance commercial frontend engineered to drive B2B/B2C service conversions.</p>
+                        <ul style="padding-left: 20px; margin-top: 10px; color: var(--text-secondary);">
+                            <li>Optimized for SEO and rapid core web vitals.</li>
+                            <li>Engineered mobile-first for field-client accessibility.</li>
+                            <li>Integrated contact routing and lead capture logic.</li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <a href="https://sagarborewells.com" target="_blank" class="btn btn-primary">Visit Live Site</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Abhishek333k. All commercial rights reserved.</p>
+            <div class="legal-links">
+                <a href="#">Terms of Service</a> | 
+                <a href="#">Privacy Policy</a> |
+                <a href="#">System Uptime</a>
+            </div>
+            <p style="font-size: 0.75rem; margin-top: 15px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <em>Notice: All operational systems (POS, ERP) showcased are proprietary. Source code is confidential to protect client infrastructure unless explicitly linked to a public GitHub repository under an MIT/Apache 2.0 license.</em>
+            </p>
+        </footer>
+    </div>
+
+</body>
+</html>
