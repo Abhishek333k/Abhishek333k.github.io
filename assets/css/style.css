@@ -206,3 +206,17 @@ header .navbar ul li a.active, header .navbar ul li a:hover { color: var(--googl
     header .navbar ul { flex-direction: column; }
     header .navbar ul li { margin: 1rem; text-align: center; }
 }
+/* =========================================
+   HERO ANIMATION: Cloud Levitation
+   ========================================= */
+.levitate {
+    animation: float 4s ease-in-out infinite;
+    /* Optional: adds a soft shadow beneath the floating image */
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15)); 
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
