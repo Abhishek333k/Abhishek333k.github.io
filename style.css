@@ -1,0 +1,79 @@
+/* Google Workspace Material Design System */
+:root {
+    --google-blue: #1a73e8;
+    --google-blue-hover: #1557b0;
+    --google-green: #1e8e3e;
+    --google-bg-light: #f8f9fa; /* Workspace background */
+    --google-bg-white: #ffffff; /* Card background */
+    --text-primary: #202124;
+    --text-secondary: #5f6368;
+    --border-color: #dadce0;
+    --elevation-1: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+    --elevation-2: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+    --transition-speed: 0.3s;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Google Sans', Roboto, Arial, sans-serif; }
+html { scroll-behavior: smooth; }
+body { background-color: var(--google-bg-light); color: var(--text-primary); line-height: 1.6; }
+
+/* Navigation Operations */
+.navbar {
+    position: fixed; top: 0; width: 100%; background: var(--google-bg-white);
+    padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
+    box-shadow: var(--elevation-1); z-index: 1000;
+}
+.navbar .logo { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+.navbar .logo span { color: var(--google-blue); }
+.nav-links { list-style: none; display: flex; gap: 30px; }
+.nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 500; transition: var(--transition-speed); }
+.nav-links a:hover, .nav-links a.active { color: var(--google-blue); }
+
+/* Section Architecture */
+section { padding: 100px 5% 50px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+.section-title { font-size: 2.2rem; color: var(--text-primary); text-align: center; margin-bottom: 40px; }
+.section-title span { color: var(--google-blue); }
+
+/* Material Buttons */
+.btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 24px;
+    background-color: var(--google-bg-white); border: 1px solid var(--border-color);
+    color: var(--google-blue); border-radius: 24px; font-weight: 500;
+    text-decoration: none; transition: var(--transition-speed); cursor: pointer;
+}
+.btn:hover { background-color: rgba(26, 115, 232, 0.04); box-shadow: var(--elevation-1); }
+.btn-primary { background-color: var(--google-blue); color: #fff; border: none; }
+.btn-primary:hover { background-color: var(--google-blue-hover); box-shadow: var(--elevation-1); }
+
+/* Hero Module */
+#home { background-color: var(--google-bg-white); flex-direction: row; align-items: center; justify-content: space-between; }
+.hero-content { max-width: 600px; }
+.hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 15px; }
+.hero-content h2 { font-size: 1.5rem; color: var(--text-secondary); margin-bottom: 20px; font-weight: 400; }
+.socials { display: flex; gap: 15px; margin-bottom: 30px; }
+.socials a { color: var(--text-secondary); font-size: 1.5rem; transition: var(--transition-speed); }
+.socials a:hover { color: var(--google-blue); }
+
+/* Grid Layouts (Skills & Projects) */
+.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+/* Material Cards */
+.card {
+    background: var(--google-bg-white); border-radius: 8px; padding: 30px;
+    border: 1px solid var(--border-color); transition: var(--transition-speed);
+}
+.card:hover { box-shadow: var(--elevation-2); border-color: transparent; transform: translateY(-3px); }
+.card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--text-primary); }
+.card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 20px; }
+
+/* Experience Timeline */
+.timeline { border-left: 2px solid var(--border-color); padding-left: 20px; margin-left: 10px; }
+.timeline-item { margin-bottom: 30px; position: relative; }
+.timeline-item::before {
+    content: ''; position: absolute; left: -27px; top: 5px; width: 12px; height: 12px;
+    background: var(--google-blue); border-radius: 50%; border: 2px solid var(--google-bg-light);
+}
+.timeline-date { font-size: 0.85rem; color: var(--google-blue); font-weight: 600; margin-bottom: 5px; }
+
+/* Footer */
+footer { text-align: center; padding: 20px; background: var(--google-bg-white); border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.85rem; }
