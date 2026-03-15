@@ -28,7 +28,23 @@ $(document).ready(function () {
             }
         });
     });
-
+    // Dynamic Favicon OS Theme Controller
+    function setFavicon() {
+        const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const favicon = document.getElementById('favicon');
+        // NOTE: Ensure this path is correct relative to the HTML file calling it.
+        // For subfolders (projects/experience), the HTML should have href="../assets/..."
+        if (favicon) {
+            let basePath = favicon.href.substring(0, favicon.href.lastIndexOf('/'));
+            favicon.href = isDarkMode ? `${basePath}/favicon_white.png` : `${basePath}/favicon_black.png`;
+        }
+    }
+    
+    // Execute on load
+    setFavicon();
+    
+    // Listen for OS theme changes in real-time
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFavicon);
     // smooth scrolling
     $('a[href*="#"]').on('click', function (e) {
         e.preventDefault();
