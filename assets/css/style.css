@@ -95,7 +95,22 @@ header .navbar ul li a.active, header .navbar ul li a:hover { color: var(--googl
 .about { background: var(--bg-light); }
 .about .row { display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; }
 .about .row .image { flex: 1 1 35rem; text-align: center; }
-.about .row .image img { width: 80%; border-radius: 8px; box-shadow: var(--elevation-2); }
+/* Fixed Portrait Frame & Lift Animation */
+.about .row .image { flex: 1 1 35rem; text-align: center; display: flex; justify-content: center; }
+.about-portrait { 
+    width: 100%; 
+    max-width: 350px; /* Locks the maximum width */
+    height: 420px;    /* Locks the height to create a uniform frame */
+    object-fit: cover; /* Prevents stretching; scales proportionally to fill frame */
+    border-radius: 12px; 
+    box-shadow: var(--elevation-1); 
+    border: 1px solid var(--border-color);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.about-portrait:hover {
+    transform: translateY(-8px); /* Professional upward lift */
+    box-shadow: var(--elevation-2);
+}
 .about .row .content { flex: 1 1 45rem; background: var(--bg-white); padding: 3rem; border-radius: 8px; box-shadow: var(--elevation-1); border: 1px solid var(--border-color); }
 .about .row .content h3 { font-size: 2.5rem; color: var(--text-dark); margin-bottom: 1rem; }
 .about .row .content .tag { font-size: 1.4rem; color: var(--bg-white); background: var(--google-green); padding: .5rem 1.5rem; border-radius: 2rem; display: inline-block; margin-bottom: 1.5rem; }
