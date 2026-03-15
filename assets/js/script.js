@@ -204,6 +204,9 @@ srtop.reveal('.skills .container .bar', { delay: 400 });
 /* SCROLL EDUCATION */
 srtop.reveal('.education .box', { interval: 200 });
 
+/* SCROLL COURSES & INTERNSHIPS */
+srtop.reveal('.courses .course-card', { interval: 200 });
+
 /* SCROLL EXPERIENCE */
 srtop.reveal('.experience .timeline', { delay: 400 });
 srtop.reveal('.experience .timeline .container', { interval: 400 });
