@@ -29,19 +29,34 @@ $(document).ready(function () {
         });
     });
   
-    // Dynamic Favicon OS Theme Controller (With Cache Busting)
-    function setFavicon() {
-        const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const favicon = document.getElementById('favicon');
+// Dynamic OS Theme Controller (Favicon & Header Logo)
+function setFavicon() {
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const favicon = document.getElementById('favicon');
+    const headerLogo = document.getElementById('header-logo-img'); // Target the header logo
+    
+    if (favicon) {
+        // Extract the base path (e.g., ./assets/images or ../assets/images)
+        let basePath = favicon.href.substring(0, favicon.href.lastIndexOf('/'));
         
-        if (favicon) {
-            let basePath = favicon.href.substring(0, favicon.href.lastIndexOf('/'));
-            // Appending ?v=1 forces the browser to ignore the cache and download the fresh image
-            favicon.href = isDarkMode ? `${basePath}/favicon_white.png?v=1` : `${basePath}/favicon_black.png?v=1`;
+        // Determine the correct image file
+        let iconName = isDarkMode ? 'favicon_white.png?v=2' : 'favicon_black.png?v=2';
+        
+        // 1. Update the Browser Tab
+        favicon.href = `${basePath}/${iconName}`;
+        
+        // 2. Update the Header Logo (if it exists on the current page)
+        if (headerLogo) {
+            headerLogo.src = `${basePath}/${iconName}`;
         }
     }
-    setFavicon();
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFavicon);
+}
+
+// Execute on load
+setFavicon();
+
+// Listen for OS theme changes in real-time
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFavicon);
 
     
     // smooth scrolling
@@ -52,12 +67,12 @@ $(document).ready(function () {
         }, 500, 'linear')
     });
 
-    // Formspree Integration Engine (Architect Override)
+   // Formspree Integration Engine
     $("#contact-form").submit(function (event) {
         event.preventDefault();
         
-        // Architect Note: You must replace 'YOUR_FORMSPREE_ID' with your actual ID from formspree.io
-        var formAction = "https://formspree.io/f/YOUR_FORMSPREE_ID"; 
+        // Architect Override: Your active Formspree ID
+        var formAction = "https://formspree.io/f/mlgpwokd"; 
         
         $.ajax({
             url: formAction,
