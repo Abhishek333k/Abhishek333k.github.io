@@ -135,20 +135,30 @@ function showProjects(projects) {
     let projectHTML = "";
     if(projectsContainer) {
         projects.forEach(project => {
-            projectHTML += `
-            <div class="box tilt">
-                <img draggable="false" src="./assets/images/projects/${project.image}.png" alt="project" />
-                <div class="content">
-                    <div class="tag"><h3>${project.name}</h3></div>
-                    <div class="desc">
-                        <p>${project.desc}</p>
-                        <div class="btns">
-                            <a href="${project.links.view}" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-                            <a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-                        </div>
+           // Check if code is private to render a lock button
+        let codeButton = project.links.code === "private" 
+            ? `<span class="btn" style="background: #f1f3f4; color: #5f6368; border: 1px solid #dadce0; cursor: not-allowed; box-shadow: none;"><i class="fas fa-lock"></i> Proprietary</span>`
+            : `<a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>`;
+
+        // Check if view link is a video demo
+        let viewButtonText = project.links.view.includes("youtube.com") || project.links.view.includes("youtu.be")
+            ? `<i class="fas fa-play-circle"></i> Watch Demo`
+            : `<i class="fas fa-eye"></i> View Live`;
+
+        projectHTML += `
+        <div class="box tilt">
+            <img draggable="false" src="./assets/images/projects/${project.image}.png" alt="project" />
+            <div class="content">
+                <div class="tag"><h3>${project.name}</h3></div>
+                <div class="desc">
+                    <p>${project.desc}</p>
+                    <div class="btns">
+                        <a href="${project.links.view}" class="btn" target="_blank">${viewButtonText}</a>
+                        ${codeButton}
                     </div>
                 </div>
-            </div>`;
+            </div>
+        </div>`;
         });
         projectsContainer.innerHTML = projectHTML;
         VanillaTilt.init(document.querySelectorAll(".tilt"), { max: 15, speed: 400 });
