@@ -94,7 +94,7 @@ $(document).ready(function () {
         $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top, }, 500, 'linear')
     });
 
-    // Formspree Integration Engine
+   // Formspree Integration Engine
     $("#contact-form").submit(function (event) {
         event.preventDefault();
         $.ajax({
@@ -104,10 +104,10 @@ $(document).ready(function () {
             dataType: "json",
             success: function() {
                 document.getElementById("contact-form").reset();
-                alert("Operational Request Transmitted Successfully.");
+                showToast("Operational Request Transmitted Successfully.");
             },
             error: function() {
-                alert("Transmission Failed! Please try again.");
+                showToast("Transmission Failed! Please verify data and try again.", true);
             }
         });
     });
