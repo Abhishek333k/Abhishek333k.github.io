@@ -109,11 +109,15 @@ function showProjects(projects) {
     if(projectsContainer) {
         projects.forEach(project => {
             
+            // Architect Logic: Lock the code button if private
             let codeButton = project.links.code === "private" 
                 ? `<span class="btn" style="background: #f1f3f4; color: #5f6368; border: 1px solid #dadce0; cursor: not-allowed; box-shadow: none;"><i class="fas fa-lock"></i> Proprietary</span>`
                 : `<a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>`;
 
-            let viewButtonText = project.links.view.includes("openGallery")
+            // Architect Logic: Detect Gallery and remove target="_blank"
+            let isGallery = project.links.view.includes("openGallery");
+            let viewTarget = isGallery ? "" : `target="_blank"`;
+            let viewButtonText = isGallery
                 ? `<i class="fas fa-images"></i> View Gallery`
                 : `<i class="fas fa-eye"></i> View Live`;
 
@@ -125,7 +129,7 @@ function showProjects(projects) {
                     <div class="desc">
                         <p>${project.desc}</p>
                         <div class="btns">
-                            <a href="${project.links.view}" class="btn" target="_blank">${viewButtonText}</a>
+                            <a href="${project.links.view}" class="btn" ${viewTarget}>${viewButtonText}</a>
                             ${codeButton}
                         </div>
                     </div>
