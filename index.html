@@ -305,15 +305,21 @@
   </div>
 </section>
 	<div id="pos-lightbox" class="lightbox-modal">
-    <span class="close-lightbox" onclick="closeGallery()">&times;</span>
-    
-    <div class="lightbox-content">
+    <div class="lightbox-appbar" id="lightbox-top-ui">
+        <div class="appbar-left">
+            <button class="icon-btn" onclick="closeGallery()"><i class="fas fa-arrow-left"></i></button>
+            <span id="lightbox-caption">Dashboard</span>
+        </div>
+        <div class="appbar-right">
+            <span id="lightbox-counter">1 / 8</span>
+            <button class="icon-btn" onclick="toggleZoom()"><i class="fas fa-search-plus"></i></button>
+        </div>
+    </div>
+
+    <div class="lightbox-content" id="lightbox-center-ui">
+        <a class="nav-btn prev-slide" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></a>
         <img id="lightbox-img" src="" alt="POS System Interface" onclick="toggleZoom()">
-        
-        <a class="prev-slide" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></a>
-        <a class="next-slide" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></a>
-        
-        <div id="lightbox-caption">Dashboard (1 / 8)</div>
+        <a class="nav-btn next-slide" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></a>
     </div>
 </div>
 <a href="#home" aria-label="ScrollTop" class="fas fa-angle-up" id="scroll-top"></a>
