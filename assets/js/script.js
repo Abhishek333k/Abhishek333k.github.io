@@ -109,27 +109,27 @@ function showProjects(projects) {
     if(projectsContainer) {
         projects.forEach(project => {
             
-            // Architect Logic: Lock the code button if private
             let codeButton = project.links.code === "private" 
                 ? `<span class="btn" style="background: #f1f3f4; color: #5f6368; border: 1px solid #dadce0; cursor: not-allowed; box-shadow: none;"><i class="fas fa-lock"></i> Proprietary</span>`
                 : `<a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>`;
 
-            // Architect Logic: Detect Gallery and remove target="_blank"
             let isGallery = project.links.view.includes("openGallery");
             let viewTarget = isGallery ? "" : `target="_blank"`;
+            let viewHref = isGallery ? `javascript:void(0)` : project.links.view;
+            let viewOnClick = isGallery ? `onclick="openGallery()"` : "";
             let viewButtonText = isGallery
                 ? `<i class="fas fa-images"></i> View Gallery`
                 : `<i class="fas fa-eye"></i> View Live`;
 
             projectHTML += `
-            <div class="box tilt">
+            <div class="box pulse-hover">
                 <img draggable="false" src="./assets/images/projects/${project.image}.png" alt="project" />
                 <div class="content">
                     <div class="tag"><h3>${project.name}</h3></div>
                     <div class="desc">
                         <p>${project.desc}</p>
                         <div class="btns">
-                            <a href="${project.links.view}" class="btn" ${viewTarget}>${viewButtonText}</a>
+                            <a href="${viewHref}" class="btn" ${viewTarget} ${viewOnClick}>${viewButtonText}</a>
                             ${codeButton}
                         </div>
                     </div>
@@ -137,7 +137,6 @@ function showProjects(projects) {
             </div>`;
         });
         projectsContainer.innerHTML = projectHTML;
-        VanillaTilt.init(document.querySelectorAll(".tilt"), { max: 15, speed: 400 });
         srtop.reveal('.work .box', { interval: 150, delay: 150 });
     }
 }
