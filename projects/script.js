@@ -121,8 +121,6 @@ function resetIdleTimer() {
 document.getElementById('pos-lightbox').addEventListener('mousemove', resetIdleTimer);
 document.getElementById('pos-lightbox').addEventListener('touchstart', resetIdleTimer);
 
-// KEEP YOUR showProjects() and getProjects() logic below this exactly as it was.
-
 function showProjects(projects) {
     let projectsContainer = document.querySelector(".work .box-container");
     let projectsHTML = "";
