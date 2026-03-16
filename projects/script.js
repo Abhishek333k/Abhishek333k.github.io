@@ -38,94 +38,90 @@ function getProjects() {
             return data
         });
 }
+
 /* =========================================
-   POS GALLERY CONTROLLER
+   POS GALLERY CONTROLLER (GOOGLE UX)
    ========================================= */
 const posImages = [
-    { src: "../assets/images/projects/pos/pos-1-dashboard.webp", caption: "1. Main Dashboard" },
-    { src: "../assets/images/projects/pos/pos-2-billing.webp", caption: "2. POS & Billing (Cart)" },
-    { src: "../assets/images/projects/pos/pos-3-products.webp", caption: "3. Product Database" },
-    { src: "../assets/images/projects/pos/pos-4-customers.webp", caption: "4. Customer Database" },
-    { src: "../assets/images/projects/pos/pos-5-ledger.webp", caption: "5. Ledger / Khata" },
-    { src: "../assets/images/projects/pos/pos-6-sales.webp", caption: "6. Sales Reports" },
-    { src: "../assets/images/projects/pos/pos-7-analytics.webp", caption: "7. Business Analytics" },
-    { src: "../assets/images/projects/pos/pos-8-settings.webp", caption: "8. System Settings (v5.4)" }
+    { src: "../assets/images/projects/pos/pos-1-dashboard.webp", caption: "Main Dashboard" },
+    { src: "../assets/images/projects/pos/pos-2-billing.webp", caption: "POS & Billing Cart" },
+    { src: "../assets/images/projects/pos/pos-3-products.webp", caption: "Product Database" },
+    { src: "../assets/images/projects/pos/pos-4-customers.webp", caption: "Customer Database" },
+    { src: "../assets/images/projects/pos/pos-5-ledger.webp", caption: "Ledger / Khata" },
+    { src: "../assets/images/projects/pos/pos-6-sales.webp", caption: "Sales Reports" },
+    { src: "../assets/images/projects/pos/pos-7-analytics.webp", caption: "Business Analytics" },
+    { src: "../assets/images/projects/pos/pos-8-settings.webp", caption: "System Settings (v5.4)" }
 ];
-
-let currentSlide = 0;
-let autoSlideInterval;
+let currentSlide = 0; let autoSlideInterval; let idleTimer;
 
 function openGallery() {
     const modal = document.getElementById('pos-lightbox');
-    modal.classList.add('show');
-    document.body.style.overflow = "hidden"; // Prevent background scrolling
-    updateGalleryUI();
-    
-    // Start auto-slider (changes every 3.5 seconds)
-    startAutoSlide();
+    if(!modal) return; 
+    modal.classList.add('show'); document.body.style.overflow = "hidden"; 
+    updateGalleryUI(); startAutoSlide(); resetIdleTimer();
 }
 
 function closeGallery() {
     const modal = document.getElementById('pos-lightbox');
-    modal.classList.remove('show');
-    document.body.style.overflow = "auto";
-    
-    // Reset zoom and clear interval
-    document.getElementById("lightbox-img").classList.remove("zoomed");
-    clearInterval(autoSlideInterval);
+    modal.classList.remove('show'); document.body.style.overflow = "auto";
+    document.getElementById("lightbox-img").classList.remove("zoomed"); 
+    clearInterval(autoSlideInterval); clearTimeout(idleTimer);
 }
 
 function updateGalleryUI() {
-    const img = document.getElementById("lightbox-img");
+    const img = document.getElementById("lightbox-img"); 
     const caption = document.getElementById("lightbox-caption");
+    const counter = document.getElementById("lightbox-counter"); // FIX: Added Counter target
     
-    // Fade out slightly for smooth transition
     img.style.opacity = 0.5;
-    
     setTimeout(() => {
-        img.src = posImages[currentSlide].src;
-        caption.innerText = `${posImages[currentSlide].caption} (${currentSlide + 1} / 8)`;
+        img.src = posImages[currentSlide].src; 
+        caption.innerText = posImages[currentSlide].caption; 
+        if(counter) counter.innerText = `${currentSlide + 1} / ${posImages.length}`; // FIX: Updates Counter
         img.style.opacity = 1;
     }, 150);
 }
 
 function changeSlide(direction) {
-    clearInterval(autoSlideInterval); // Stop auto-slide if user manually clicks
-    currentSlide += direction;
-    
-    // Loop around
+    clearInterval(autoSlideInterval); currentSlide += direction;
     if (currentSlide >= posImages.length) currentSlide = 0;
     if (currentSlide < 0) currentSlide = posImages.length - 1;
-    
-    // Reset zoom when changing slides
-    document.getElementById("lightbox-img").classList.remove("zoomed");
-    updateGalleryUI();
+    document.getElementById("lightbox-img").classList.remove("zoomed"); 
+    updateGalleryUI(); resetIdleTimer();
 }
 
 function startAutoSlide() {
     clearInterval(autoSlideInterval);
-    autoSlideInterval = setInterval(() => {
-        changeSlide(1);
-        startAutoSlide(); // restarts the timer so it doesn't overlap manual clicks
-    }, 3500);
+    autoSlideInterval = setInterval(() => { changeSlide(1); startAutoSlide(); }, 3500);
 }
 
 function toggleZoom() {
-    const img = document.getElementById("lightbox-img");
-    img.classList.toggle("zoomed");
-    
-    // Pause auto-slider while zoomed in
-    if(img.classList.contains("zoomed")) {
-        clearInterval(autoSlideInterval);
-    } else {
-        startAutoSlide();
-    }
+    const img = document.getElementById("lightbox-img"); img.classList.toggle("zoomed");
+    if(img.classList.contains("zoomed")) { clearInterval(autoSlideInterval); } else { startAutoSlide(); }
+    resetIdleTimer();
 }
 
-// Close modal if user clicks outside the image
-document.getElementById('pos-lightbox').addEventListener('click', function(e) {
-    if (e.target === this) closeGallery();
-});
+/* --- FIX: Google UX Auto-Hide UI on Idle --- */
+function resetIdleTimer() {
+    const appbar = document.getElementById('lightbox-top-ui');
+    const navBtns = document.querySelectorAll('.nav-btn');
+    if(!appbar) return;
+    
+    appbar.classList.remove('ui-hidden');
+    navBtns.forEach(btn => btn.classList.remove('ui-hidden'));
+    clearTimeout(idleTimer);
+    
+    if(document.getElementById('pos-lightbox').classList.contains('show')) {
+        idleTimer = setTimeout(() => {
+            appbar.classList.add('ui-hidden');
+            navBtns.forEach(btn => btn.classList.add('ui-hidden'));
+        }, 2500);
+    }
+}
+document.getElementById('pos-lightbox').addEventListener('mousemove', resetIdleTimer);
+document.getElementById('pos-lightbox').addEventListener('touchstart', resetIdleTimer);
+
+// KEEP YOUR showProjects() and getProjects() logic below this exactly as it was.
 
 function showProjects(projects) {
     let projectsContainer = document.querySelector(".work .box-container");
