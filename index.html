@@ -304,7 +304,18 @@
       &copy; 2026 M. Abhishek Ramesh. Engineered for Scale.
   </div>
 </section>
-	
+	<div id="pos-lightbox" class="lightbox-modal">
+    <span class="close-lightbox" onclick="closeGallery()">&times;</span>
+    
+    <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="POS System Interface" onclick="toggleZoom()">
+        
+        <a class="prev-slide" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></a>
+        <a class="next-slide" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></a>
+        
+        <div id="lightbox-caption">Dashboard (1 / 8)</div>
+    </div>
+</div>
 <a href="#home" aria-label="ScrollTop" class="fas fa-angle-up" id="scroll-top"></a>
 
 <div id="snackbar">System Notification</div>
