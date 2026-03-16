@@ -198,3 +198,15 @@ section { min-height: 100vh; padding: 10rem 9% 2rem; background: var(--bg-light)
     .prev-slide { left: 10px; }
     .next-slide { right: 10px; }
 }
+
+/* =========================================
+   ENTERPRISE PULSE HOVER (PROJECT CARDS)
+   ========================================= */
+.pulse-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+.pulse-hover:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 0 0 15px rgba(26, 115, 232, 0.05), 0 4px 10px rgba(0,0,0,0.15) !important;
+    border-color: var(--google-blue) !important;
+}
