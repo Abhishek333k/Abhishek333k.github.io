@@ -137,46 +137,40 @@ function showProjects(projects) {
             ? `<span class="btn" style="background: #f1f3f4; color: #5f6368; border: 1px solid #dadce0; cursor: not-allowed; box-shadow: none;"><i class="fas fa-lock"></i> Proprietary</span>`
             : `<a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>`;
 
-        // Architect Logic: Detect if it's the POS Gallery
+        // Architect Logic: Safely route the Gallery click
         let isGallery = project.links.view.includes("openGallery");
-        
-        // Remove target="_blank" so it doesn't open a blank tab, and change the text!
         let viewTarget = isGallery ? "" : `target="_blank"`;
+        let viewHref = isGallery ? `javascript:void(0)` : project.links.view;
+        let viewOnClick = isGallery ? `onclick="openGallery()"` : "";
         let viewButtonText = isGallery
             ? `<i class="fas fa-images"></i> View Gallery`
             : `<i class="fas fa-eye"></i> View Live`;
 
         projectsHTML += `
         <div class="grid-item ${project.category}">
-        <div class="box tilt" style="width: 380px; margin: 1rem">
-      <img draggable="false" src="../assets/images/projects/${project.image}.png" alt="project" />
-      <div class="content">
-        <div class="tag">
-        <h3>${project.name}</h3>
-        </div>
-        <div class="desc">
-          <p>${project.desc}</p>
-          <div class="btns">
-            <a href="${project.links.view}" class="btn" ${viewTarget}>${viewButtonText}</a>
-            ${codeButton}
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>`
+            <div class="box pulse-hover" style="width: 380px; margin: 1rem">
+                <img draggable="false" src="../assets/images/projects/${project.image}.png" alt="project" />
+                <div class="content">
+                    <div class="tag"><h3>${project.name}</h3></div>
+                    <div class="desc">
+                        <p>${project.desc}</p>
+                        <div class="btns">
+                            <a href="${viewHref}" class="btn" ${viewTarget} ${viewOnClick}>${viewButtonText}</a>
+                            ${codeButton}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`
     });
     projectsContainer.innerHTML = projectsHTML;
 
-    // isotope filter products
+    // Isotope filter products
     var $grid = $('.box-container').isotope({
-        itemSelector: '.grid-item',
-        layoutMode: 'fitRows',
-        masonry: {
-            columnWidth: 200
-        }
+        itemSelector: '.grid-item', layoutMode: 'fitRows', masonry: { columnWidth: 200 }
     });
 
-    // filter items on button click
+    // Filter items on button click
     $('.button-group').on('click', 'button', function () {
         $('.button-group').find('.is-checked').removeClass('is-checked');
         $(this).addClass('is-checked');
@@ -184,7 +178,6 @@ function showProjects(projects) {
         $grid.isotope({ filter: filterValue });
     });
 }
-
 
 getProjects().then(data => {
     showProjects(data);
