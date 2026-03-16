@@ -1,49 +1,18 @@
-// Google Material Snackbar (Toast) Controller
-function showToast(message, isError = false) {
-    const snackbar = document.getElementById("snackbar");
-    if (!snackbar) return;
-    
-    // Set the message text
-    snackbar.innerText = message;
-    
-    // Apply error styling if a transmission fails
-    if (isError) {
-        snackbar.classList.add("error");
-    } else {
-        snackbar.classList.remove("error");
-    }
-    
-    // Trigger the animation
-    snackbar.classList.add("show");
-    
-    // Hide it automatically after 3.5 seconds
-    setTimeout(function(){ 
-        snackbar.classList.remove("show"); 
-    }, 3500);
-}
-
 // 1. Dynamic OS Theme Controller (Favicon & Header Logo)
 function setFavicon() {
     const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     const favicon = document.getElementById('favicon');
     const headerLogo = document.getElementById('header-logo-img');
-    
     if (favicon) {
         let basePath = favicon.href.substring(0, favicon.href.lastIndexOf('/'));
         let iconName = isDarkMode ? 'favicon_white.png?v=3' : 'favicon_black.png?v=3';
-        
         favicon.href = `${basePath}/${iconName}`;
         if (headerLogo) { headerLogo.src = `${basePath}/${iconName}`; }
     }
 }
-
-// Execute immediately on load
 setFavicon();
-
-// Listen for OS theme changes in real-time
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFavicon);
 
-// Listen for Browser Tab changes to ensure title/favicon stay updated
 document.addEventListener('visibilitychange', function () {
     if (document.visibilityState === "visible") {
         document.title = "Portfolio | M. Abhishek Ramesh";
@@ -54,19 +23,26 @@ document.addEventListener('visibilitychange', function () {
     }
 });
 
-// 2. Main DOM Operations
+// 2. Google Material Snackbar (Toast) Controller
+function showToast(message, isError = false) {
+    const snackbar = document.getElementById("snackbar");
+    if (!snackbar) return;
+    snackbar.innerText = message;
+    if (isError) { snackbar.classList.add("error"); } else { snackbar.classList.remove("error"); }
+    snackbar.classList.add("show");
+    setTimeout(function(){ snackbar.classList.remove("show"); }, 3500);
+}
+
+// 3. Main DOM Operations
 $(document).ready(function () {
-    // Mobile Menu Toggle
     $('#menu').click(function () {
         $(this).toggleClass('fa-times');
         $('.navbar').toggleClass('active');
     });
 
-    // Scroll Navigation Logic
     $(window).on('scroll load', function () {
         $('#menu').removeClass('fa-times');
         $('.navbar').removeClass('active');
-
         if ($(window).scrollTop() > 60) {
             $('header').css({ 'box-shadow': '0 1px 2px 0 rgba(60,64,67,0.3)', 'background': '#ffffff' });
             $('#scroll-top').addClass('active');
@@ -74,13 +50,11 @@ $(document).ready(function () {
             $('header').css({ 'box-shadow': '0 1px 2px 0 rgba(60,64,67,0.1)', 'background': '#ffffff' });
             $('#scroll-top').removeClass('active');
         }
-
         $('section').each(function () {
             let height = $(this).height();
             let offset = $(this).offset().top - 200;
             let top = $(window).scrollTop();
             let id = $(this).attr('id');
-
             if (top >= offset && top < offset + height) {
                 $('.navbar ul li a').removeClass('active');
                 $('.navbar').find(`[href="#${id}"]`).addClass('active');
@@ -88,13 +62,12 @@ $(document).ready(function () {
         });
     });
 
-    // Smooth Scrolling
     $('a[href*="#"]').on('click', function (e) {
         e.preventDefault();
         $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top, }, 500, 'linear')
     });
 
-   // Formspree Integration Engine
+    // Formspree API with Toast Alerts
     $("#contact-form").submit(function (event) {
         event.preventDefault();
         $.ajax({
@@ -113,7 +86,7 @@ $(document).ready(function () {
     });
 });
 
-// 3. JSON Fetch Operations (Skills & Projects)
+// 4. JSON Fetch Operations (Skills & Projects)
 async function fetchData(type = "skills") {
     let response = type === "skills" ? await fetch("skills.json") : await fetch("./projects/projects.json");
     return await response.json();
@@ -135,30 +108,29 @@ function showProjects(projects) {
     let projectHTML = "";
     if(projectsContainer) {
         projects.forEach(project => {
-           // Check if code is private to render a lock button
-        let codeButton = project.links.code === "private" 
-            ? `<span class="btn" style="background: #f1f3f4; color: #5f6368; border: 1px solid #dadce0; cursor: not-allowed; box-shadow: none;"><i class="fas fa-lock"></i> Proprietary</span>`
-            : `<a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>`;
+            
+            let codeButton = project.links.code === "private" 
+                ? `<span class="btn" style="background: #f1f3f4; color: #5f6368; border: 1px solid #dadce0; cursor: not-allowed; box-shadow: none;"><i class="fas fa-lock"></i> Proprietary</span>`
+                : `<a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>`;
 
-        // Check if view link is a video demo
-        let viewButtonText = project.links.view.includes("youtube.com") || project.links.view.includes("youtu.be")
-            ? `<i class="fas fa-play-circle"></i> Watch Demo`
-            : `<i class="fas fa-eye"></i> View Live`;
+            let viewButtonText = project.links.view.includes("openGallery")
+                ? `<i class="fas fa-images"></i> View Gallery`
+                : `<i class="fas fa-eye"></i> View Live`;
 
-        projectHTML += `
-        <div class="box tilt">
-            <img draggable="false" src="./assets/images/projects/${project.image}.png" alt="project" />
-            <div class="content">
-                <div class="tag"><h3>${project.name}</h3></div>
-                <div class="desc">
-                    <p>${project.desc}</p>
-                    <div class="btns">
-                        <a href="${project.links.view}" class="btn" target="_blank">${viewButtonText}</a>
-                        ${codeButton}
+            projectHTML += `
+            <div class="box tilt">
+                <img draggable="false" src="./assets/images/projects/${project.image}.png" alt="project" />
+                <div class="content">
+                    <div class="tag"><h3>${project.name}</h3></div>
+                    <div class="desc">
+                        <p>${project.desc}</p>
+                        <div class="btns">
+                            <a href="${project.links.view}" class="btn" target="_blank">${viewButtonText}</a>
+                            ${codeButton}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>`;
+            </div>`;
         });
         projectsContainer.innerHTML = projectHTML;
         VanillaTilt.init(document.querySelectorAll(".tilt"), { max: 15, speed: 400 });
@@ -169,7 +141,7 @@ function showProjects(projects) {
 fetchData("skills").then(data => showSkills(data));
 fetchData("projects").then(data => showProjects(data));
 
-// 4. Typed.js
+// 5. Typed.js
 if(document.querySelector('.typing-text')){
     new Typed(".typing-text", {
         strings: ["Systems Engineering", "Operations Management", "Full-Stack Development", "Cyber Security"],
@@ -177,29 +149,19 @@ if(document.querySelector('.typing-text')){
     });
 }
 
-// 5. Unified Material Design Scroll Reveal
-const srtop = ScrollReveal({
-    origin: 'bottom',
-    distance: '40px',
-    duration: 800,
-    delay: 100,
-    easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
-    reset: false 
-});
-
+// 6. Unified Material Design Scroll Reveal
+const srtop = ScrollReveal({ origin: 'bottom', distance: '40px', duration: 800, delay: 100, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', reset: false });
 srtop.reveal('.home .content h2', { delay: 100 });
 srtop.reveal('.home .content p', { delay: 200 });
 srtop.reveal('.home .content .btn', { delay: 300 });
 srtop.reveal('.home .image', { delay: 400 });
 srtop.reveal('.home .socials a', { interval: 100, delay: 500 });
-
 srtop.reveal('.heading', { delay: 100 });
 srtop.reveal('.about .content h3', { delay: 150 });
 srtop.reveal('.about .content .tag', { delay: 200 });
 srtop.reveal('.about .content p', { delay: 250 });
 srtop.reveal('.about .content .box-container', { delay: 300 });
 srtop.reveal('.about .content .resumebtn', { delay: 350 });
-
 srtop.reveal('.skills .container', { delay: 150 });
 srtop.reveal('.skills .container .bar', { interval: 100, delay: 250 });
 srtop.reveal('.education .box', { interval: 150, delay: 150 });
@@ -208,22 +170,11 @@ srtop.reveal('.experience .timeline', { delay: 150 });
 srtop.reveal('.experience .timeline .container', { interval: 200, delay: 250 });
 srtop.reveal('.contact .saas-form', { delay: 150 });
 
-// 6. Particles.js Engine
+// 7. Particles.js Engine
 if(document.getElementById('particles-js')) {
     particlesJS("particles-js", {
-        "particles": {
-            "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-            "color": { "value": "#1a73e8" }, 
-            "shape": { "type": "circle" },
-            "opacity": { "value": 0.5, "random": false },
-            "size": { "value": 3, "random": true },
-            "line_linked": { "enable": true, "distance": 150, "color": "#1a73e8", "opacity": 0.4, "width": 1 },
-            "move": { "enable": true, "speed": 2, "direction": "none" }
-        },
-        "interactivity": {
-            "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } },
-            "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 } }
-        },
+        "particles": { "number": { "value": 60, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#1a73e8" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": false }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#1a73e8", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 2, "direction": "none" } },
+        "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } }, "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 } } },
         "retina_detect": true
     });
 }
