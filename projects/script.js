@@ -42,52 +42,68 @@ function getProjects() {
 /* =========================================
    POS GALLERY CONTROLLER (GOOGLE UX)
    ========================================= */
+/* =========================================
+   GOOGLE IMMERSIVE VIEWER CONTROLLER
+   ========================================= */
 const posImages = [
-    { src: "../assets/images/projects/pos/pos-1-dashboard.webp", caption: "Main Dashboard" },
-    { src: "../assets/images/projects/pos/pos-2-billing.webp", caption: "POS & Billing Cart" },
-    { src: "../assets/images/projects/pos/pos-3-products.webp", caption: "Product Database" },
-    { src: "../assets/images/projects/pos/pos-4-customers.webp", caption: "Customer Database" },
-    { src: "../assets/images/projects/pos/pos-5-ledger.webp", caption: "Ledger / Khata" },
-    { src: "../assets/images/projects/pos/pos-6-sales.webp", caption: "Sales Reports" },
-    { src: "../assets/images/projects/pos/pos-7-analytics.webp", caption: "Business Analytics" },
-    { src: "../assets/images/projects/pos/pos-8-settings.webp", caption: "System Settings (v5.4)" }
+    { src: "./assets/images/projects/pos/pos-1-dashboard.webp", caption: "Main Dashboard" },
+    { src: "./assets/images/projects/pos/pos-2-billing.webp", caption: "POS & Billing Cart" },
+    { src: "./assets/images/projects/pos/pos-3-products.webp", caption: "Product Database" },
+    { src: "./assets/images/projects/pos/pos-4-customers.webp", caption: "Customer Database" },
+    { src: "./assets/images/projects/pos/pos-5-ledger.webp", caption: "Ledger / Khata" },
+    { src: "./assets/images/projects/pos/pos-6-sales.webp", caption: "Sales Reports" },
+    { src: "./assets/images/projects/pos/pos-7-analytics.webp", caption: "Business Analytics" },
+    { src: "./assets/images/projects/pos/pos-8-settings.webp", caption: "System Settings (v5.4)" }
 ];
-let currentSlide = 0; let autoSlideInterval; let idleTimer;
+
+let currentSlide = 0; 
+let autoSlideInterval;
+let idleTimer;
 
 function openGallery() {
     const modal = document.getElementById('pos-lightbox');
     if(!modal) return; 
-    modal.classList.add('show'); document.body.style.overflow = "hidden"; 
-    updateGalleryUI(); startAutoSlide(); resetIdleTimer();
+    modal.classList.add('show'); 
+    document.body.style.overflow = "hidden"; 
+    updateGalleryUI(); 
+    startAutoSlide();
+    resetIdleTimer();
 }
 
 function closeGallery() {
     const modal = document.getElementById('pos-lightbox');
-    modal.classList.remove('show'); document.body.style.overflow = "auto";
+    modal.classList.remove('show'); 
+    document.body.style.overflow = "auto";
     document.getElementById("lightbox-img").classList.remove("zoomed"); 
-    clearInterval(autoSlideInterval); clearTimeout(idleTimer);
+    clearInterval(autoSlideInterval);
+    clearTimeout(idleTimer);
 }
 
 function updateGalleryUI() {
     const img = document.getElementById("lightbox-img"); 
     const caption = document.getElementById("lightbox-caption");
-    const counter = document.getElementById("lightbox-counter"); // FIX: Added Counter target
+    const counter = document.getElementById("lightbox-counter");
     
     img.style.opacity = 0.5;
     setTimeout(() => {
-        img.src = posImages[currentSlide].src; 
+        // Adjust path logic depending on whether script is in root or projects/ folder
+        let pathPrefix = window.location.pathname.includes("projects") ? "../" : "./";
+        img.src = posImages[currentSlide].src.replace("./", pathPrefix);
+        
         caption.innerText = posImages[currentSlide].caption; 
-        if(counter) counter.innerText = `${currentSlide + 1} / ${posImages.length}`; // FIX: Updates Counter
+        if(counter) counter.innerText = `${currentSlide + 1} / ${posImages.length}`;
         img.style.opacity = 1;
     }, 150);
 }
 
 function changeSlide(direction) {
-    clearInterval(autoSlideInterval); currentSlide += direction;
+    clearInterval(autoSlideInterval); 
+    currentSlide += direction;
     if (currentSlide >= posImages.length) currentSlide = 0;
     if (currentSlide < 0) currentSlide = posImages.length - 1;
     document.getElementById("lightbox-img").classList.remove("zoomed"); 
-    updateGalleryUI(); resetIdleTimer();
+    updateGalleryUI();
+    resetIdleTimer();
 }
 
 function startAutoSlide() {
@@ -96,12 +112,13 @@ function startAutoSlide() {
 }
 
 function toggleZoom() {
-    const img = document.getElementById("lightbox-img"); img.classList.toggle("zoomed");
+    const img = document.getElementById("lightbox-img"); 
+    img.classList.toggle("zoomed");
     if(img.classList.contains("zoomed")) { clearInterval(autoSlideInterval); } else { startAutoSlide(); }
     resetIdleTimer();
 }
 
-/* --- FIX: Google UX Auto-Hide UI on Idle --- */
+/* UX Feature: Auto-Hide UI on Idle */
 function resetIdleTimer() {
     const appbar = document.getElementById('lightbox-top-ui');
     const navBtns = document.querySelectorAll('.nav-btn');
@@ -109,6 +126,7 @@ function resetIdleTimer() {
     
     appbar.classList.remove('ui-hidden');
     navBtns.forEach(btn => btn.classList.remove('ui-hidden'));
+    
     clearTimeout(idleTimer);
     
     if(document.getElementById('pos-lightbox').classList.contains('show')) {
@@ -118,8 +136,13 @@ function resetIdleTimer() {
         }, 2500);
     }
 }
-document.getElementById('pos-lightbox').addEventListener('mousemove', resetIdleTimer);
-document.getElementById('pos-lightbox').addEventListener('touchstart', resetIdleTimer);
+
+// Bind idle detection
+const lightboxNode = document.getElementById('pos-lightbox');
+if(lightboxNode) {
+    lightboxNode.addEventListener('mousemove', resetIdleTimer);
+    lightboxNode.addEventListener('touchstart', resetIdleTimer);
+}
 
 function showProjects(projects) {
     let projectsContainer = document.querySelector(".work .box-container");
