@@ -86,6 +86,15 @@ $(document).ready(function () {
     });
 });
 
+/* =========================================
+   SECURITY PROTOCOL: HTML Sanitizer
+   ========================================= */
+function escapeHTML(str) {
+    return str.replace(/[&<>'"]/g, 
+        tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+    );
+}
+
 // 4. JSON Fetch Operations (Skills & Projects)
 async function fetchData(type = "skills") {
     let response = type === "skills" ? await fetch("skills.json") : await fetch("./projects/projects.json");
@@ -97,7 +106,8 @@ function showSkills(skills) {
     let skillHTML = "";
     if(skillsContainer) {
         skills.forEach(skill => {
-            skillHTML += `<div class="bar"><div class="info"><img src=${skill.icon} alt="skill" /><span>${skill.name}</span></div></div>`;
+            let safeName = escapeHTML(skill.name);
+            skillHTML += `<div class="bar"><div class="info"><img src=${skill.icon} alt="skill" /><span>${safeName}</span></div></div>`;
         });
         skillsContainer.innerHTML = skillHTML;
     }
@@ -109,6 +119,10 @@ function showProjects(projects) {
     if(projectsContainer) {
         projects.forEach(project => {
             
+            // SECURITY: Sanitize inputs to prevent XSS
+            let safeName = escapeHTML(project.name);
+            let safeDesc = escapeHTML(project.desc);
+
             let codeButton = project.links.code === "private" 
                 ? `<span class="btn" style="background: #f1f3f4; color: #5f6368; border: 1px solid #dadce0; cursor: not-allowed; box-shadow: none;"><i class="fas fa-lock"></i> Proprietary</span>`
                 : `<a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>`;
@@ -120,14 +134,17 @@ function showProjects(projects) {
             let viewButtonText = isGallery
                 ? `<i class="fas fa-images"></i> View Gallery`
                 : `<i class="fas fa-eye"></i> View Live`;
+            
+            let repoPath = window.location.pathname.includes("Abhishek333k.github.io") ? "/Abhishek333k.github.io" : "";
 
+            // FIX: Removed .png hardcode. Added Object-Fit image framing optimization.
             projectHTML += `
-            <div class="box pulse-hover">
-                <img draggable="false" src="./assets/images/projects/${project.image}.png" alt="project" />
+            <div class="box pulse-hover" style="border-radius: 8px; overflow: hidden;">
+                <img draggable="false" src="${repoPath}/assets/images/projects/${project.image}" alt="${safeName}" onerror="this.src='${repoPath}/assets/images/favicon_black.png'" style="height: 200px; width: 100%; object-fit: cover; object-position: top center;" />
                 <div class="content">
-                    <div class="tag"><h3>${project.name}</h3></div>
+                    <div class="tag"><h3>${safeName}</h3></div>
                     <div class="desc">
-                        <p>${project.desc}</p>
+                        <p>${safeDesc}</p>
                         <div class="btns">
                             <a href="${viewHref}" class="btn" ${viewTarget} ${viewOnClick}>${viewButtonText}</a>
                             ${codeButton}
@@ -137,7 +154,9 @@ function showProjects(projects) {
             </div>`;
         });
         projectsContainer.innerHTML = projectHTML;
-        ScrollReveal().sync();
+        
+        // Wait briefly for DOM to render, then sync ScrollReveal
+        setTimeout(() => { srtop.reveal('.work .box', { interval: 150, delay: 150 }); }, 50);
     }
 }
 
@@ -220,7 +239,6 @@ function updateGalleryUI() {
     
     img.style.opacity = 0.5;
     setTimeout(() => {
-        // AUTOMATIC PATH ROUTING: Detects if GitHub pages repo name is needed
         let repoPath = window.location.pathname.includes("Abhishek333k.github.io") ? "/Abhishek333k.github.io" : "";
         img.src = repoPath + posImages[currentSlide].src; 
         
@@ -259,5 +277,6 @@ function resetIdleTimer() {
         idleTimer = setTimeout(() => { appbar.classList.add('ui-hidden'); navBtns.forEach(btn => btn.classList.add('ui-hidden')); }, 2500);
     }
 }
+
 const lightboxNode = document.getElementById('pos-lightbox');
 if(lightboxNode) { lightboxNode.addEventListener('mousemove', resetIdleTimer); lightboxNode.addEventListener('touchstart', resetIdleTimer); }
