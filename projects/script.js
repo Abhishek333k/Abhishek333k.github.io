@@ -1,3 +1,6 @@
+/* =========================================
+   COMMERCIAL DEPLOYMENTS | MASTER CONTROLLER
+   ========================================= */
 $(document).ready(function () {
     // FIX: Corrected class target for Mobile UI
     $('#menu').click(function () {
@@ -127,7 +130,7 @@ if(lightboxNode) { lightboxNode.addEventListener('mousemove', resetIdleTimer); l
 /* =========================================
    PROJECT RENDERING ENGINE
    ========================================= */
-// FIX: Initializing ScrollReveal
+// FIX: Initializing ScrollReveal locally for this page
 const srProjects = ScrollReveal({ origin: 'bottom', distance: '40px', duration: 800, delay: 100, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', reset: false });
 
 function showProjects(projects) {
@@ -151,10 +154,11 @@ function showProjects(projects) {
 
         let repoPath = window.location.pathname.includes("Abhishek333k.github.io") ? "/Abhishek333k.github.io" : "";
 
+        // FIX: Removed .png hardcode. Added Object-Fit image framing optimization.
         projectsHTML += `
         <div class="grid-item ${project.category}">
-            <div class="box pulse-hover" style="width: 380px; margin: 1rem auto;">
-                <img draggable="false" src="${repoPath}/assets/images/projects/${project.image}" alt="${safeName}" onerror="this.src='${repoPath}/assets/images/favicon_black.png'" />
+            <div class="box pulse-hover" style="width: 380px; margin: 1rem auto; border-radius: 8px; overflow: hidden;">
+                <img draggable="false" src="${repoPath}/assets/images/projects/${project.image}" alt="${safeName}" onerror="this.src='${repoPath}/assets/images/favicon_black.png'" style="height: 220px; width: 100%; object-fit: cover; object-position: top center;" />
                 <div class="content">
                     <div class="tag"><h3>${safeName}</h3></div>
                     <div class="desc">
@@ -171,6 +175,7 @@ function showProjects(projects) {
     
     projectsContainer.innerHTML = projectsHTML;
 
+    // Initialize Isotope filtering
     var $grid = $('.box-container').isotope({
         itemSelector: '.grid-item', layoutMode: 'fitRows', masonry: { columnWidth: 200 }
     });
@@ -182,8 +187,9 @@ function showProjects(projects) {
         $grid.isotope({ filter: filterValue });
     });
     
-    // FIX: Properly triggering ScrollReveal after rendering
-    srProjects.reveal('.grid-item', { interval: 150 });
+    // FIX: Properly triggering ScrollReveal after elements are rendered
+    setTimeout(() => { srProjects.reveal('.grid-item', { interval: 150 }); }, 50);
 }
 
+// Execute Fetch
 getProjects().then(data => { showProjects(data); });
