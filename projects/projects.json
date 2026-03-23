@@ -2,7 +2,7 @@
   {
     "name": "SilenVault E-Commerce Platform",
     "desc": "A responsive commercial frontend engineered for digital transactions. Optimized for high-performance product rendering and seamless user flow.",
-    "image": "assets/images/projects/silenvault-store.webp",
+    "image": "silenvault-store.webp",
     "category": "basicweb",
     "links": {
       "view": "https://store.silenvault.com",
