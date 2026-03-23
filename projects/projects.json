@@ -1,5 +1,4 @@
 [
-  
   {
     "name": "SilenVault E-Commerce Platform",
     "desc": "A responsive commercial frontend engineered for digital transactions. Optimized for high-performance product rendering and seamless user flow.",
@@ -13,31 +12,31 @@
   {
     "name": "Sagar Borewells Platform",
     "desc": "A high-performance commercial frontend engineered to drive B2B/B2C service conversions, complementing field operations and logistics.",
-    "image": "sagar-borewells",
+    "image": "sagar-borewells.png",
     "category": "basicweb",
     "links": {
       "view": "https://sagarborewells.com",
-      "code": "#"
+      "code": "private"
     }
   },
   {
     "name": "SilenVault Secure App",
     "desc": "A secure digital web application focused on data integrity, utilizing principles from ethical hacking and cyber security training.",
-    "image": "silenvault",
+    "image": "silenvault.png",
     "category": "security",
     "links": {
       "view": "https://www.silenvault.com",
-      "code": "#"
-    }, 
-    {
+      "code": "private"
+    }
+  },
+  {
     "name": "Enterprise POS System",
     "desc": "Offline-capable Point of Sale application engineered for retail operations. Features dynamic invoice generation and strict sequential billing logic.",
-    "image": "pos-system",
+    "image": "pos-system.webp",
     "category": "fullstack",
     "links": {
       "view": "javascript:openGallery()",
       "code": "private"
     }
-  },
   }
 ]
