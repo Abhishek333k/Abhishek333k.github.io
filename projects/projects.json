@@ -1,12 +1,13 @@
 [
+  
   {
-    "name": "Enterprise POS System",
-    "desc": "Offline-capable Point of Sale application engineered for retail operations. Features dynamic invoice generation and strict sequential billing logic.",
-    "image": "pos-system",
-    "category": "fullstack",
+    "name": "SilenVault E-Commerce Platform",
+    "desc": "A responsive commercial frontend engineered for digital transactions. Optimized for high-performance product rendering and seamless user flow.",
+    "image": "silenvault-store.webp",
+    "category": "basicweb",
     "links": {
-      "view": "javascript:openGallery()",
-      "code": "private"
+      "view": "https://store.silenvault.com",
+      "code": "https://github.com/Abhishek333k/YOUR-REPO-NAME"
     }
   },
   {
@@ -27,6 +28,16 @@
     "links": {
       "view": "https://www.silenvault.com",
       "code": "#"
+    }, 
+    {
+    "name": "Enterprise POS System",
+    "desc": "Offline-capable Point of Sale application engineered for retail operations. Features dynamic invoice generation and strict sequential billing logic.",
+    "image": "pos-system",
+    "category": "fullstack",
+    "links": {
+      "view": "javascript:openGallery()",
+      "code": "private"
     }
+  },
   }
 ]
