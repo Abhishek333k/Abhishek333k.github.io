@@ -30,6 +30,16 @@
     }
   },
   {
+    "name": "Hope Homeo Care Clinic",
+    "desc": "A comprehensive digital healthcare platform featuring a secure patient portal, real-time review fetching, and Firebase backend integration for streamlined clinic operations.",
+    "image": "hopehomeocare.webp",
+    "category": "fullstack",
+    "links": {
+      "view": "https://abhishek333k.github.io/hope-homeo-care/",
+      "code": "private"
+    }
+  },
+  {
     "name": "Enterprise POS System",
     "desc": "Offline-capable Point of Sale application engineered for retail operations. Features dynamic invoice generation and strict sequential billing logic.",
     "image": "pos-system.webp",
