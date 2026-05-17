@@ -2,12 +2,10 @@
 function setFavicon() {
     const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     const favicon = document.getElementById('favicon');
-    const headerLogo = document.getElementById('header-logo-img');
     if (favicon) {
         let basePath = favicon.href.substring(0, favicon.href.lastIndexOf('/'));
         let iconName = isDarkMode ? 'favicon_white.png?v=3' : 'favicon_black.png?v=3';
         favicon.href = `${basePath}/${iconName}`;
-        if (headerLogo) { headerLogo.src = `${basePath}/${iconName}`; }
     }
 }
 setFavicon();
@@ -30,7 +28,7 @@ function showToast(message, isError = false) {
     snackbar.innerText = message;
     if (isError) { snackbar.classList.add("error"); } else { snackbar.classList.remove("error"); }
     snackbar.classList.add("show");
-    setTimeout(function(){ snackbar.classList.remove("show"); }, 3500);
+    setTimeout(function () { snackbar.classList.remove("show"); }, 3500);
 }
 
 // 3. Main DOM Operations
@@ -75,11 +73,11 @@ $(document).ready(function () {
             method: "POST",
             data: $(this).serialize(),
             dataType: "json",
-            success: function() {
+            success: function () {
                 document.getElementById("contact-form").reset();
                 showToast("Operational Request Transmitted Successfully.");
             },
-            error: function() {
+            error: function () {
                 showToast("Transmission Failed! Please verify data and try again.", true);
             }
         });
@@ -90,7 +88,7 @@ $(document).ready(function () {
    SECURITY PROTOCOL: HTML Sanitizer
    ========================================= */
 function escapeHTML(str) {
-    return str.replace(/[&<>'"]/g, 
+    return str.replace(/[&<>'"]/g,
         tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
     );
 }
@@ -104,7 +102,7 @@ async function fetchData(type = "skills") {
 function showSkills(skills) {
     let skillsContainer = document.getElementById("skillsContainer");
     let skillHTML = "";
-    if(skillsContainer) {
+    if (skillsContainer) {
         skills.forEach(skill => {
             let safeName = escapeHTML(skill.name);
             skillHTML += `<div class="bar"><div class="info"><img src=${skill.icon} alt="skill" /><span>${safeName}</span></div></div>`;
@@ -116,14 +114,14 @@ function showSkills(skills) {
 function showProjects(projects) {
     let projectsContainer = document.querySelector("#work .box-container");
     let projectHTML = "";
-    if(projectsContainer) {
+    if (projectsContainer) {
         projects.forEach(project => {
-            
+
             // SECURITY: Sanitize inputs to prevent XSS
             let safeName = escapeHTML(project.name);
             let safeDesc = escapeHTML(project.desc);
 
-            let codeButton = project.links.code === "private" 
+            let codeButton = project.links.code === "private"
                 ? `<span class="btn" style="background: #f1f3f4; color: #5f6368; border: 1px solid #dadce0; cursor: not-allowed; box-shadow: none;"><i class="fas fa-lock"></i> Proprietary</span>`
                 : `<a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>`;
 
@@ -134,7 +132,7 @@ function showProjects(projects) {
             let viewButtonText = isGallery
                 ? `<i class="fas fa-images"></i> View Gallery`
                 : `<i class="fas fa-eye"></i> View Live`;
-            
+
             let repoPath = window.location.pathname.includes("Abhishek333k.github.io") ? "/Abhishek333k.github.io" : "";
 
             // FIX: Removed .png hardcode. Added Object-Fit image framing optimization.
@@ -154,7 +152,7 @@ function showProjects(projects) {
             </div>`;
         });
         projectsContainer.innerHTML = projectHTML;
-        
+
         // Wait briefly for DOM to render, then sync ScrollReveal
         setTimeout(() => { srtop.reveal('.work .box', { interval: 150, delay: 150 }); }, 50);
     }
@@ -164,9 +162,14 @@ fetchData("skills").then(data => showSkills(data));
 fetchData("projects").then(data => showProjects(data));
 
 // 5. Typed.js
-if(document.querySelector('.typing-text')){
+if (document.querySelector('.typing-text')) {
     new Typed(".typing-text", {
-        strings: ["Systems Engineering", "Operations Management", "Full-Stack Development", "Cyber Security"],
+        strings: [
+            "Freelance Full-Stack Engineer",
+            "Custom Web Platforms",
+            "E-Commerce Architect",
+            "Cyber Security Solutions"
+        ],
         loop: true, typeSpeed: 50, backSpeed: 25, backDelay: 500,
     });
 }
@@ -193,7 +196,7 @@ srtop.reveal('.experience .timeline .container', { interval: 200, delay: 250 });
 srtop.reveal('.contact .saas-form', { delay: 150 });
 
 // 7. Particles.js Engine
-if(document.getElementById('particles-js')) {
+if (document.getElementById('particles-js')) {
     particlesJS("particles-js", {
         "particles": { "number": { "value": 60, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#1a73e8" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": false }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#1a73e8", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 2, "direction": "none" } },
         "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } }, "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 } } },
@@ -220,30 +223,30 @@ let currentSlide = 0; let autoSlideInterval; let idleTimer;
 
 function openGallery() {
     const modal = document.getElementById('pos-lightbox');
-    if(!modal) return; 
-    modal.classList.add('show'); document.body.style.overflow = "hidden"; 
+    if (!modal) return;
+    modal.classList.add('show'); document.body.style.overflow = "hidden";
     updateGalleryUI(); startAutoSlide(); resetIdleTimer();
 }
 
 function closeGallery() {
     const modal = document.getElementById('pos-lightbox');
     modal.classList.remove('show'); document.body.style.overflow = "auto";
-    document.getElementById("lightbox-img").classList.remove("zoomed"); 
+    document.getElementById("lightbox-img").classList.remove("zoomed");
     clearInterval(autoSlideInterval); clearTimeout(idleTimer);
 }
 
 function updateGalleryUI() {
-    const img = document.getElementById("lightbox-img"); 
+    const img = document.getElementById("lightbox-img");
     const caption = document.getElementById("lightbox-caption");
     const counter = document.getElementById("lightbox-counter");
-    
+
     img.style.opacity = 0.5;
     setTimeout(() => {
         let repoPath = window.location.pathname.includes("Abhishek333k.github.io") ? "/Abhishek333k.github.io" : "";
-        img.src = repoPath + posImages[currentSlide].src; 
-        
-        caption.innerText = posImages[currentSlide].caption; 
-        if(counter) counter.innerText = `${currentSlide + 1} / ${posImages.length}`;
+        img.src = repoPath + posImages[currentSlide].src;
+
+        caption.innerText = posImages[currentSlide].caption;
+        if (counter) counter.innerText = `${currentSlide + 1} / ${posImages.length}`;
         img.style.opacity = 1;
     }, 150);
 }
@@ -252,7 +255,7 @@ function changeSlide(direction) {
     clearInterval(autoSlideInterval); currentSlide += direction;
     if (currentSlide >= posImages.length) currentSlide = 0;
     if (currentSlide < 0) currentSlide = posImages.length - 1;
-    document.getElementById("lightbox-img").classList.remove("zoomed"); 
+    document.getElementById("lightbox-img").classList.remove("zoomed");
     updateGalleryUI(); resetIdleTimer();
 }
 
@@ -263,20 +266,20 @@ function startAutoSlide() {
 
 function toggleZoom() {
     const img = document.getElementById("lightbox-img"); img.classList.toggle("zoomed");
-    if(img.classList.contains("zoomed")) { clearInterval(autoSlideInterval); } else { startAutoSlide(); }
+    if (img.classList.contains("zoomed")) { clearInterval(autoSlideInterval); } else { startAutoSlide(); }
     resetIdleTimer();
 }
 
 function resetIdleTimer() {
     const appbar = document.getElementById('lightbox-top-ui');
     const navBtns = document.querySelectorAll('.nav-btn');
-    if(!appbar) return;
+    if (!appbar) return;
     appbar.classList.remove('ui-hidden'); navBtns.forEach(btn => btn.classList.remove('ui-hidden'));
     clearTimeout(idleTimer);
-    if(document.getElementById('pos-lightbox').classList.contains('show')) {
+    if (document.getElementById('pos-lightbox').classList.contains('show')) {
         idleTimer = setTimeout(() => { appbar.classList.add('ui-hidden'); navBtns.forEach(btn => btn.classList.add('ui-hidden')); }, 2500);
     }
 }
 
 const lightboxNode = document.getElementById('pos-lightbox');
-if(lightboxNode) { lightboxNode.addEventListener('mousemove', resetIdleTimer); lightboxNode.addEventListener('touchstart', resetIdleTimer); }
+if (lightboxNode) { lightboxNode.addEventListener('mousemove', resetIdleTimer); lightboxNode.addEventListener('touchstart', resetIdleTimer); }
