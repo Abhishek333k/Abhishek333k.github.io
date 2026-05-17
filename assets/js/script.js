@@ -162,12 +162,13 @@ fetchData("skills").then(data => showSkills(data));
 fetchData("projects").then(data => showProjects(data));
 
 // 5. Typed.js
-if (document.querySelector('.typing-text')) {
+if(document.querySelector('.typing-text')){
     new Typed(".typing-text", {
         strings: [
-            "Freelance Full-Stack Engineer",
-            "Custom Web Platforms",
-            "E-Commerce Architect",
+            "Freelance Full-Stack Engineer", 
+            "Custom Web Platforms", 
+            "IoT & Hardware Prototyping", 
+            "E-Commerce Architect", 
             "Cyber Security Solutions"
         ],
         loop: true, typeSpeed: 50, backSpeed: 25, backDelay: 500,
