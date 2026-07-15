@@ -22,7 +22,7 @@
   {
     "name": "SilenVault Secure App",
     "desc": "A secure digital web application focused on data integrity, utilizing principles from ethical hacking and cyber security training.",
-    "image": "silenvault-tools.png",
+    "image": "silenvault-tools.webp",
     "category": "security",
     "links": {
       "view": "https://tools.silenvault.com",
@@ -52,7 +52,7 @@
   {
     "name": "SilenVault Games Studio",
     "desc": "A high-performance gaming interface deploying dynamic web experiences. Built for speed and interactive user engagement.",
-    "image": "silenvault-games.png",
+    "image": "silenvault-games.webp",
     "category": "basicweb",
     "links": {
       "view": "https://games.silenvault.com",
@@ -62,7 +62,7 @@
   {
     "name": "Joatmon Research Portal",
     "desc": "A corporate news and research platform designed with strict E-E-A-T guidelines to establish high domain authority and professional credibility.",
-    "image": "joatmon-site.png",
+    "image": "joatmon-site.webp",
     "category": "fullstack",
     "links": {
       "view": "https://joatmon.site",
